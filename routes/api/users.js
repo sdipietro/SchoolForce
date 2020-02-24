@@ -35,7 +35,16 @@ router.post('/register', (req, res) => {
                 if (err) throw err;
                 newUser.password = hash;
                 newUser.save()
-                    .then(user => res.json(user))
+                    .then(user => {
+                        const payload = { id: user.id, handle: user.email };
+                        //key will expire in an hour
+                        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+                            res.json({
+                              success: true,
+                              token: "Bearer " + token
+                            });
+                          });
+                        })
                     .catch(err => console.log(err));
                 })
             })
@@ -43,7 +52,7 @@ router.post('/register', (req, res) => {
     })
 })
 
-// Login routes 
+// Login route
 
 router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
@@ -79,7 +88,8 @@ router.post('/login', (req, res) => {
                 });
               });
             } else {
-                return res.status(400).json({password: 'Incorrect password'});
+                errors.password = "Incorrect password";
+                return res.status(400).json(errors);
             }
         })
     })
