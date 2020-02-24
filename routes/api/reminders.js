@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
         .catch(err => res.status(404).json({ noRemindersFound: 'No reminders found' }));
 });
 
-router.get('/user/:user_id', (req, res) => {
-    Reminder.find({ user: req.params.user_id })
+router.get('/user/:userId', (req, res) => {
+    Reminder.find({ user: req.params.userId })
         .sort({ date: -1 })
         .then(Reminders => res.json(Reminders))
         .catch(err =>

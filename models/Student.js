@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const StudentSchema = new Schema({
-    first_name: {
+    firstName: {
         type: String,
         required: true
     },
-    last_name: {
+    lastName: {
         type: String,
         required: true
     },
-    parent_id: {
+    parentId: {
         type: [Schema.Types.ObjectId],
         ref: 'users',
         required: true
@@ -18,21 +18,21 @@ const StudentSchema = new Schema({
     allergies: {
         type: [String]
     },
-    special_needs: {
+    specialNeeds: {
         type: [String]
     },
-    medical_conditions: {
+    medicalConditions: {
         type: [String]
     },
     gender: {
         type: String,
         required: true
     },
-    date_of_birth: {
+    dateOfBirth: {
         type: Date,
         required: true
     },
-    start_date: {
+    startDate: {
         type: Date,
         default: Date.now
     },

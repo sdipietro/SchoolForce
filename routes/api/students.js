@@ -12,23 +12,23 @@ router.get('/students', (req, res) => {
 
 });
 
-router.get('/students/:student_id', (req, res) => {
-    Student.find({ user: req.params.parent_id })
+router.get('/students/:studentId', (req, res) => {
+    Student.find({ user: req.params.parentId })
 
 });
 
-router.post('/students/:student_id', (req, res) => {
-    Student.find({ user: req.params.user_id })
+router.post('/students/:studentId', (req, res) => {
+    Student.find({ user: req.params.userId })
 
 });
 
-router.put('/students/:student_id/edit', (req, res) => {
-    Student.find({ user: req.params.user_id })
+router.put('/students/:studentId/edit', (req, res) => {
+    Student.find({ user: req.params.userId })
 
 });
 
-router.delete('/students/:student_id', (req, res) => {
-    Student.find({ user: req.params.user_id })
+router.delete('/students/:studentId', (req, res) => {
+    Student.find({ user: req.params.userId })
 
 });
 
@@ -43,8 +43,8 @@ router.get('/', (req, res) => {
         .catch(err => res.status(404).json({ noStudentsFound: 'No students found' }));
 });
 
-router.get('/user/:user_id', (req, res) => {
-    Student.find({ user: req.params.user_id })
+router.get('/user/:userId', (req, res) => {
+    Student.find({ user: req.params.userId })
         .sort({ date: -1 })
         .then(Students => res.json(Students))
         .catch(err =>

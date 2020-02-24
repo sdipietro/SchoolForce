@@ -4,43 +4,47 @@ const validText = require('./valid-text');
 module.exports = function validateStudentInput(data) {
     let errors = {};
 
-    data.first_name = validText(data.first_name) ? data.first_name : '';
-    data.last_name = validText(data.last_name) ? data.last_name : '';
+    data.firstName = validText(data.firstName) ? data.firstName : '';
+    data.lastName = validText(data.lastName) ? data.lastName : '';
     data.gender = validText(data.gender) ? data.gender : '';
-    data.date_of_birth = validText(data.date_of_birth) ? data.date_of_birth : '';
-    data.start_date = validText(data.start_date) ? data.start_date : '';
+    data.dateOfBirth = validText(data.dateOfBirth) ? data.dateOfBirth : '';
+    data.startDate = validText(data.startDate) ? data.startDate : '';
     data.grade = validText(data.grade) ? data.grade : '';
 
-    if (Validator.isEmpty(data.first_name)) {
-        errors.first_name = 'First name is required';
+    if (Validator.isEmpty(data.firstName)) {
+        errors.firstName = 'First name is required';
     }
 
-    if (!Validator.isLength(data.first_name, { min: 2 })) {
-        errors.first_name = 'First name must be a minimun of 2 characters';
+    if (!Validator.isLength(data.firstName, { min: 2 })) {
+        errors.firstName = 'First name must be a minimun of 2 characters';
     }
 
-    if (!Validator.isLength(data.first_name, { max: 15 })) {
-        errors.first_name = 'First name must be a maximum of 15 characters';
+    if (!Validator.isLength(data.firstName, { max: 15 })) {
+        errors.firstName = 'First name must be a maximum of 15 characters';
     }
 
-    if (Validator.isEmpty(data.last_name)) {
-        errors.last_name = 'Last name is required';
+    if (Validator.isEmpty(data.lastName)) {
+        errors.lastName = 'Last name is required';
     }
 
-    if (!Validator.isLength(data.last_name, { min: 2 })) {
-        errors.last_name = 'Last name must be a minimun of 2 characters';
+    if (!Validator.isLength(data.lastName, { min: 2 })) {
+        errors.lastName = 'Last name must be a minimun of 2 characters';
     }
 
-    if (!Validator.isLength(data.last_name, { max: 15 })) {
-        errors.last_name = 'Last name must be a maximum of 15 characters';
+    if (!Validator.isLength(data.lastName, { max: 15 })) {
+        errors.lastName = 'Last name must be a maximum of 15 characters';
     }
 
     if (Validator.isEmpty(data.gender)) {
         errors.gender = 'Gender is required';
     }
 
-    if (Validator.isEmpty(data.date_of_birth)) {
-        errors.date_of_birth = 'Date of birth is required';
+    if (Validator.isEmpty(data.dateOfBirth)) {
+        errors.dateOfBirth = 'Date of birth is required';
+    }
+
+    if (Validator.isEmpty(data.startDate)) {
+        errors.startDate = 'Start date is required';
     }
 
     if (Validator.isEmpty(data.grade)) {
