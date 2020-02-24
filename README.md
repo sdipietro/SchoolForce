@@ -1,6 +1,6 @@
 # SchoolForce
 
-(Check the wiki here for info:)[https://github.com/jcolla-holla/SchoolForce/wiki] 
+[Check the wiki here for info:](https://github.com/jcolla-holla/SchoolForce/wiki)
 
 
 Production README - make sure it has:
