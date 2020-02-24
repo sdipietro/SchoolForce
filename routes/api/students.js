@@ -7,6 +7,36 @@ const Student = require('../../models/Student');
 const validateStudentInput = require('../../validation/students');
 
 
+router.get('/students', (req, res) => {
+    Student.find()
+
+});
+
+router.get('/students/:student_id', (req, res) => {
+    Student.find({ user: req.params.parent_id })
+
+});
+
+router.post('/students/:student_id', (req, res) => {
+    Student.find({ user: req.params.user_id })
+
+});
+
+router.put('/students/:student_id/edit', (req, res) => {
+    Student.find({ user: req.params.user_id })
+
+});
+
+router.delete('/students/:student_id', (req, res) => {
+    Student.find({ user: req.params.user_id })
+
+});
+
+
+//------------------
+
+
+
 router.get('/', (req, res) => {
     Student.find()
         .then(Students => res.json(Students))

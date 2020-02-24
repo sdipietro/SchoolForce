@@ -10,14 +10,10 @@ const StudentSchema = new Schema({
         type: String,
         required: true
     },
-    parent_1_id: {
-        type: Schema.Types.ObjectId,
+    parent_id: {
+        type: [Schema.Types.ObjectId],
         ref: 'users',
         required: true
-    },
-    parent_2_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
     },
     allergies: {
         type: [String]
