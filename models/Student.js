@@ -20,16 +20,13 @@ const StudentSchema = new Schema({
         ref: 'users'
     },
     allergies: {
-        type: [String],
-        required: true
+        type: [String]
     },
     special_needs: {
-        type: [String],
-        required: true
+        type: [String]
     },
     medical_conditions: {
-        type: [String],
-        required: true
+        type: [String]
     },
     gender: {
         type: String,
