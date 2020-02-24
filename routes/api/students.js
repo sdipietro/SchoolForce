@@ -3,12 +3,12 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const Student = require('../../models/student');
+const Student = require('../../models/Student');
 const validateStudentInput = require('../../validation/students');
+
 
 router.get('/', (req, res) => {
     Student.find()
-        .sort({ date: -1 })
         .then(Students => res.json(Students))
         .catch(err => res.status(404).json({ noStudentsFound: 'No students found' }));
 });

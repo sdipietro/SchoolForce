@@ -11,27 +11,24 @@ const StudentSchema = new Schema({
         required: true
     },
     parent_1_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'users',
         required: true
     },
     parent_2_id: {
-        type: String,
-        required: false
-    },
-    contact_numbers: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     },
     allergies: {
-        type: String,
+        type: [String],
         required: true
     },
     special_needs: {
-        type: String,
+        type: [String],
         required: true
     },
     medical_conditions: {
-        type: String,
+        type: [String],
         required: true
     },
     gender: {
@@ -39,7 +36,7 @@ const StudentSchema = new Schema({
         required: true
     },
     date_of_birth: {
-        type: String,
+        type: Date,
         required: true
     },
     start_date: {
@@ -47,8 +44,8 @@ const StudentSchema = new Schema({
         default: Date.now
     },
     grade: {
-        type: Date,
-        default: Date.now
+        type: String,
+        required: true
     }
 });
 
