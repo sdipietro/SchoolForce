@@ -16,6 +16,10 @@ mongoose
 // //basic route to render info on our page
 app.get("/", (req, res) => res.send("SchoolForce is in session"));
 
+app.use(passport.initialize());
+require('./config/passport')(passport);
+
+
 // app.use("/api/users", users);
 // app.use("/api/tweets", tweets);
 
