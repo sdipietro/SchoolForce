@@ -10,6 +10,7 @@ mongoose
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 
+    // hi testing
 // //basic route to render info on our page
 app.get("/", (req, res) => res.send("SchoolForce is in session"));
 
