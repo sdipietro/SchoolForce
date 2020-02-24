@@ -20,7 +20,7 @@ const ReminderSchema = new Schema({
         ref: 'users',
         required: true
     },
-    date: {
+    created_date: {
         type: Date,
         default: Date.now
     }
