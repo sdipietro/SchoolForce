@@ -1,6 +1,6 @@
 # SchoolForce
 
-SchoolForce is a light CRM tool for school directors to manage communication with parents via SMS message and keep track of students/students.
+SchoolForce is a light CRM tool for school directors to (1) manage communication with parents via SMS message and (2) keep track of students/students.
 
 * **Wiki Links**
   * [Functionality and MVP Features](https://github.com/jcolla-holla/SchoolForce/wiki/MVP-Features)
