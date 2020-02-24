@@ -1,5 +1,7 @@
 # SchoolForce
 
+## [Live Link](https://school-force.herokuapp.com/)
+
 SchoolForce is a light CRM tool for school directors to (1) manage communication with parents via SMS message and (2) keep track of students/students.
 
 * **Wiki Links**
