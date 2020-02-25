@@ -17,18 +17,12 @@ mongoose
 // basic route to render info on our page
 app.get("/", (req, res) => res.send("SchoolForce is in session"));
 
-<<<<<<< HEAD
-app.use("/api/users", users);
-app.use("/api/students", students);
-app.use("/api/reminders", reminders);
-=======
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
 
 // app.use("/api/users", users);
 // app.use("/api/tweets", tweets);
->>>>>>> aa7472cb0066e204172cbdf41e1ede1210238495
 
 // const bodyParser = require('body-parser');
 // app.use(bodyParser.urlencoded({ extended: false }));
