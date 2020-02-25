@@ -1,3 +1,4 @@
+require("./config/passport")(passport);
 const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
@@ -17,10 +18,10 @@ mongoose
 app.get("/", (req, res) => res.send("SchoolForce is in session"));
 
 app.use(passport.initialize());
-require('./config/passport')(passport);
 
 
-// app.use("/api/users", users);
+
+app.use("/api/users", users);
 // app.use("/api/tweets", tweets);
 
 // const bodyParser = require('body-parser');
