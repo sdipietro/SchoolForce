@@ -4,13 +4,12 @@ const app = express();
 const db = require('./config/keys').mongoURI;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const passport = require('passport');
-
 
 const users = require("./routes/api/users");
 const students = require("./routes/api/students");
 const reminders = require("./routes/api/reminders");
 
+const passport = require('passport');
 
 //this is for heroku deploy: https://open.appacademy.io/learn/swe-in-person-nyc/mern-stack-curriculum/deploying-your-app
 const path = require('path');
