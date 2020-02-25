@@ -10,8 +10,8 @@ module.exports = function validateRegisterInput(data) {
     data.email = validText(data.email) ? data.email : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
-    data.mobile = validText(data.mobile) ? data.mobile : '';
-    data.schoolId = typeof data.schoolId === 'integer' ? data.schoolId : '';
+    // data.mobile = validText(data.mobile) ? data.mobile : '';
+    // data.schoolId = typeof data.schoolId === 'integer' ? data.schoolId : '';
 
     if (!Validator.isLength(data.firstName, { min: 3, max: 20})) {
         errors.firstName = 'Please enter your real name';
@@ -57,13 +57,13 @@ module.exports = function validateRegisterInput(data) {
         errors.mobile = 'Mobile number field is required';
       }
 
-      if (!Validator.isMobilePhone(data.mobile)) {
-        errors.mobile = 'Mobile is invalid';
-      }
+      // if (!Validator.isMobilePhone(data.mobile)) {
+      //   errors.mobile = 'Mobile is invalid';
+      // }
 
-      if (Validator.isEmpty(data.schoolId)) {
-        errors.schoolId = 'School ID field is required';
-      }
+      // if (Validator.isEmpty(data.schoolId)) {
+      //   errors.schoolId = 'School ID field is required';
+      // }
 
       return {
         errors,
