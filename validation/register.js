@@ -11,7 +11,7 @@ module.exports = function validateRegisterInput(data) {
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
     data.mobile = validText(data.mobile) ? data.mobile : '';
-    data.schoolId = typeof data.schoolId === 'integer' ? data.schoolId : ''?;
+    data.schoolId = typeof data.schoolId === 'integer' ? data.schoolId : '';
 
     if (!Validator.isLength(data.firstName, { min: 3, max: 20})) {
         errors.firstName = 'Please enter your real name';
