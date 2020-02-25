@@ -4,30 +4,28 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Reminder = require('../../models/Reminder');
-const validateReminderInput = require('../../validation/Reminders');
+const validateReminderInput = require('../../validation/reminders');
 
 router.get('/', (req, res) => {
     Reminder.find()
-        .sort({ date: -1 })
-        .then(Reminders => res.json(Reminders))
+        .then(reminders => res.json(reminders))
         .catch(err => res.status(404).json({ noRemindersFound: 'No reminders found' }));
 });
 
-router.get('/user/:user_id', (req, res) => {
-    Reminder.find({ user: req.params.user_id })
-        .sort({ date: -1 })
-        .then(Reminders => res.json(Reminders))
+router.get('/user/:userId', (req, res) => {
+    Reminder.find({ admin: req.params.userId })
+        .then(reminders => res.json(reminders))
         .catch(err =>
-            res.status(404).json({ noRemindersFound: 'No reminders found from that user' }
+            res.status(404).json({ noRemindersFound: 'No reminders found from that admin' }
             )
         );
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:title', (req, res) => {
     Reminder.findById(req.params.id)
-        .then(Reminder => res.json(Reminder))
+        .then(reminder => res.json(reminder))
         .catch(err =>
-            res.status(404).json({ noRemindersFound: 'No Reminder found with that ID' })
+            res.status(404).json({ noRemindersFound: 'No reminder found with that title' })
         );
 });
 
@@ -41,11 +39,14 @@ router.post('/',
         }
 
         const newReminder = new Reminder({
-            text: req.body.text,
-            user: req.user.id
+            title: req.body.text,
+            body: req.body.body,
+            recipientId: [req.body.recipientId],
+            authorId: req.user.id,
+            createdDate: req.body.createdDate
         });
 
-        newReminder.save().then(Reminder => res.json(Reminder));
+        newReminder.save().then(reminder => res.json(reminder));
     }
 );
 

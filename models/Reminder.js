@@ -10,17 +10,17 @@ const ReminderSchema = new Schema({
         type: String,
         required: true
     },
-    recipient_id: {
+    recipientId: {
         type: [Schema.Types.ObjectId],
         ref: 'users',
         required: true
     },
-    author_id: {
+    authorId: {
         type: Schema.Types.ObjectId,
         ref: 'users',
         required: true
     },
-    created_date: {
+    createdDate: {
         type: Date,
         default: Date.now
     }
