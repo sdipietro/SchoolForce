@@ -1,3 +1,4 @@
+require("./config/passport")(passport);
 const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
@@ -25,8 +26,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 require('./models/User');
 
-
-app.use("/api/user", users);
+app.use("/api/users", users);
 // app.use("/api/tweets", tweets);
 
 app.use(bodyParser.urlencoded({ extended: false }));
