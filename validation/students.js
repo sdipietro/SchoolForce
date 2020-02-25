@@ -11,6 +11,7 @@ module.exports = function validateStudentInput(data) {
     data.startDate = validText(data.startDate) ? data.startDate : '';
     data.grade = validText(data.grade) ? data.grade : '';
 
+
     if (Validator.isEmpty(data.firstName)) {
         errors.firstName = 'First name is required';
     }

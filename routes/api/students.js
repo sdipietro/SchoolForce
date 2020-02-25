@@ -12,6 +12,39 @@ router.get('/students', (req, res) => {
 
 });
 
+router.post('/students', (req, res) => {
+    const { errors, isValid } = validateStudentInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    // Check to make sure nobody has already registered with a duplicate email
+    Student.find({ student: req.student.id  })
+        .then(user => {
+            if (parent1 || parent2) {
+                // Throw a 400 error if the email address already exists
+                return res.status(400).json({ email: "A user has already registered with this address" })
+            } else {
+
+                const newUser = new User({
+                    handle: req.body.handle,
+                    email: req.body.email,
+                    password: req.body.password
+                })
+
+        }
+})
+
+
+
+
+
+router.get('/students', (req, res) => {
+    Student.find()
+
+});
+
 router.get('/students/:studentId', (req, res) => {
     Student.find({ user: req.params.parentId })
 
