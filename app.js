@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const users = require("./routes/api/users");
 const students = require("./routes/api/students");
 const reminders = require("./routes/api/reminders");
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-
+const passport = require('passport');
 const port = process.env.PORT || 5000;
 
 mongoose
