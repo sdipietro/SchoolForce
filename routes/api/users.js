@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
+const keys = require('../../config/keys');
+
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
@@ -34,7 +36,7 @@ router.post('/register', (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             mobile: req.body.mobile,
-            schoolId: req.body.schoolId,
+            // schoolId: req.body.schoolId,
             email: req.body.email,
             password: req.body.password,
             admin: false

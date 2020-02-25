@@ -6,6 +6,8 @@ const passport = require('passport');
 const Reminder = require('../../models/Reminder');
 const validateReminderInput = require('../../validation/reminders');
 
+router.get("/test", (req, res) => res.json({ msg: "This is the reminders route" }));
+
 router.get('/', (req, res) => {
     Reminder.find()
         .then(reminders => res.json(reminders))
