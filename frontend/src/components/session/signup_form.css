@@ -1,0 +1,157 @@
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "sofia-pro";
+    font-size: 14px;
+    margin: 0;
+}
+
+.signup-form-page {
+    box-sizing: border-box;
+    display: block;
+}
+
+.signup-page-header {
+    width: 100%;
+    height: 42px;
+    margin-top: 19px;
+    padding: 0px 32px 0px 8px;
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.signup-page-header-left {
+    box-sizing: border-box;
+    font-family: sofia-pro, sans-serif;
+    padding-left: 20px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    cursor: pointer;
+}
+
+.signup-page-header-left a {
+    text-decoration: none;
+}
+
+.header-logo {
+    font-family: sofia-pro, sans-serif;
+    color: black;
+}
+
+.signup-form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+    margin-bottom: 280px;
+    box-sizing: border-box;
+}
+
+.signup-form-box {
+    box-sizing: border-box;
+}
+
+.form-title {
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 30px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    font-weight: bolder;
+    margin: 0 auto 60px;
+}
+
+.signup-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.form-header-signup {
+    margin-bottom: 33px;
+    position: relative;
+    box-sizing: border-box;
+    height: 40.5px;
+    display: flex;
+}
+
+.form-header-signup a {
+    height: 40.5px;
+    border-bottom: 1px solid rgba(22,24,35,0.2);
+    font-family: sofia-pro, sans-serif;
+    font-style: normal;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    color: rgba(22,24,35,0.6);
+    text-decoration: none;
+    top: 50%;
+    box-sizing: border-box;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.input-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-fields-left {
+    /* margin-right: 20px; */
+}
+
+.form-header-signup a:first-of-type {
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+.signup-input {
+    height: 48px;
+    width: 100%;
+    padding: 0;
+    border: none;
+    caret-color: green;
+    line-height: 100%;
+    outline: none;
+    pointer-events: initial !important;
+    -webkit-appearance: none;
+    margin: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(22,24,35,0.2);
+    font-size: 11px;
+    font-family: sofia-pro, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+}
+
+.session-error-messages {
+    list-style: none;
+    color: red;
+    font-family: sofiapro, PingFangSC, sans-serif;
+}
+
+.session-submit {
+    color: rgba(22,24,35,0.3);
+    font-weight: 500;
+    font-size: 12px;
+    background-color: rgba(22,24,35,0.06);
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    border-radius: 2px;
+    position: relative;
+    margin-top: 30px;
+    cursor: pointer;
+    border: none;
+}

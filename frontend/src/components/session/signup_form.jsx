@@ -1,5 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import "./signup_form.css";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -59,56 +61,75 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="login-form">
-            <br />
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.firstName}
-              onChange={this.update("firstName")}
-              placeholder="First Name"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.lastName}
-              onChange={this.update("lastName")}
-              placeholder="Last Name"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.phoneNumber}
-              onChange={this.update("phoneNumber")}
-              placeholder="Phone Number"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password2}
-              onChange={this.update("password2")}
-              placeholder="Confirm Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+      <div className="signup-form-page">
+        <header className="signup-page-header">
+          <div className="signup-page-header-left">
+            <Link to="/">
+              <h1 className="header-logo">SchoolForce</h1>
+            </Link>
           </div>
-        </form>
+        </header>
+        <div className="signup-form-container">
+          <form onSubmit={this.handleSubmit} className="signup-form-box">
+            <div className="form-title">Sign up</div>
+            <div className="signup-form">
+              <div className="form-header-signup">
+                <a href="#/signup">Sign Up</a>
+                <a href="#/login">Log in</a>
+              </div>
+              <div className="input-fields">
+                <div className="input-fields-left">
+                  <input
+                    type="text"
+                    value={this.state.firstName}
+                    onChange={this.update("firstName")}
+                    placeholder="First Name"
+                    className="signup-input"
+                  />
+                  <input
+                    type="text"
+                    value={this.state.lastName}
+                    onChange={this.update("lastName")}
+                    placeholder="Last Name"
+                    className="signup-input"
+                  />
+                  <input
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.update("email")}
+                    placeholder="Email"
+                    className="signup-input"
+                  />
+                </div>
+                <div className="input-fields-left">
+                  <input
+                    type="text"
+                    value={this.state.phoneNumber}
+                    onChange={this.update("phoneNumber")}
+                    placeholder="Phone Number"
+                    className="signup-input"
+                  />
+                  <input
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                    placeholder="Password"
+                    className="signup-input"
+                  />
+                  <input
+                    type="password"
+                    value={this.state.password2}
+                    onChange={this.update("password2")}
+                    placeholder="Confirm Password"
+                    className="signup-input"
+                  />
+                </div>
+              </div>
+              <div className="session-error-messages">{this.renderErrors()}</div>
+              <input type="submit" value="Sign up" className="session-submit" />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
