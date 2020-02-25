@@ -1,0 +1,63 @@
+.login-form-page {
+    box-sizing: border-box;
+    display: block;
+}
+
+.login-page-header {
+    width: 100%;
+    height: 42px;
+    margin-top: 19px;
+    padding: 0px 32px 0px 8px;
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.login-page-header-left {
+    box-sizing: border-box;
+    font-family: sofia-pro, sans-serif;
+    padding-left: 20px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    cursor: pointer;
+}
+
+.header-logo {
+    font-family: sofia-pro, sans-serif;
+    color: black;
+}
+
+.login-form-container {
+
+}
+
+.login-form-box {
+
+}
+
+.form-title {
+
+}
+
+.login-form {
+
+}
+
+.form-header-signup {
+
+}
+
+.login-input {
+
+}
+
+.session-error-messages {
+
+}
+
+.session-submit {
+
+}
