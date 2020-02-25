@@ -6,6 +6,7 @@ const passport = require('passport');
 const Student = require('../../models/Student');
 const validateStudentInput = require('../../validation/students');
 
+router.get("/test", (req, res) => res.json({ msg: "This is the students route" }));
 
 router.get('/', (req, res) => {
     Student.find()
