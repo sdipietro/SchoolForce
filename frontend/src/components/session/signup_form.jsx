@@ -20,12 +20,12 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      return this.props.history.push("/");
-    } else {
-      return this.setState({ errors: nextProps.errors });
-    }
+      this.props.history.push("/reminders");
+    } 
+      
+    this.setState({ errors: nextProps.errors });
   }
 
   componentWillUnmount() {
@@ -50,12 +50,12 @@ class SignupForm extends React.Component {
     if (this.state.demo === true) {
       return this.props.login(demo)
     } else {
-      return this.props.signup(user)
+      return this.props.signup(user, this.props.history); 
     }
   }
 
   demoLogin() {
-    this.state.demo = true;
+    this.setState({ demo: true });
   }
 
   renderErrors() {
