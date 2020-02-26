@@ -104,8 +104,8 @@ class SignupForm extends React.Component {
                 <div className="input-fields-left">
                   <input
                     type="text"
-                    value={this.state.phoneNumber}
-                    onChange={this.update("phoneNumber")}
+                    value={this.state.mobile}
+                    onChange={this.update("mobile")}
                     placeholder="Phone Number"
                     className="signup-input"
                   />
