@@ -12,6 +12,7 @@ const reminders = require("./routes/api/reminders");
 const passport = require('passport');
 
 //this is for heroku deploy: https://open.appacademy.io/learn/swe-in-person-nyc/mern-stack-curriculum/deploying-your-app
+
 const path = require('path');
 
 if (process.env.NODE_ENV === 'production') {
@@ -23,10 +24,10 @@ if (process.env.NODE_ENV === 'production') {
 
 //heroku deploy script END
 
-const port = process.env.PORT || 5000;
+// , useUnifiedTopology: true
 
 mongoose
-    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 
@@ -38,13 +39,11 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
 app.use("/api/users", users);
-// app.use("/api/tweets", tweets);
 
 
 //tell Express to start a socket and listen for connections on the path.
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 

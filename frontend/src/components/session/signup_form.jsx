@@ -13,19 +13,23 @@ class SignupForm extends React.Component {
       mobile: "",
       password: "",
       password2: "",
+      demo: false,
       errors: {}
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push("/");
+      return this.props.history.push("/");
+    } else {
+      return this.setState({ errors: nextProps.errors });
     }
+  }
 
-    this.setState({ errors: nextProps.errors });
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   update(field) {
@@ -37,27 +41,21 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let user = {
-      email: this.state.email,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      mobile: this.state.mobile,
-      password: this.state.password,
-      password2: this.state.password2
-    };
-
-    //Jesse note: promise chain here necessary because otherwise this.props.login will run before this.props.signup has created a new user in the DB
-    this.props.signup(user, this.props.history).then(newUser => {
-        return this.props.login({ email: this.state.email, password: this.state.password })}
-      );
-  }
-
-  demoLogin() {
-    let user = {
+    let user = Object.assign({}, this.state);
+    let demo = {
       email: "demo@fake.org",
       password: "password"
     }
-    this.props.login(user);
+
+    if (this.state.demo === true) {
+      return this.props.login(demo)
+    } else {
+      return this.props.signup(user)
+    }
+  }
+
+  demoLogin() {
+    this.state.demo = true;
   }
 
   renderErrors() {
@@ -71,6 +69,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
+
     return (
       <div className="signup-form-page">
         <header className="signup-page-header">
@@ -88,8 +87,9 @@ class SignupForm extends React.Component {
                 <a href="#/signup">Sign Up</a>
                 <a href="#/login">Log in</a>
               </div>
-              <button className="demo-login-button" onClick={() => this.demoLogin()}>Demo Login</button>
 
+            <button className="demo-login-button" onClick={() => this.demoLogin()}>Demo Login</button>
+              
               <div className="input-fields">
                 <div className="input-fields-left">
                   <input
