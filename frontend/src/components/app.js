@@ -10,14 +10,19 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 
 const App = () => (
-  <div>
+  <div id="appContainer">
     <NavBarContainer />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
+
+    <footer className="main-page-footer">
+      <div> Copyright &copy; 2020 SchoolForce</div>
+    </footer>
   </div>
+  
 );
 
 export default App;

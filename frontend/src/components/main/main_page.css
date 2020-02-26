@@ -8,6 +8,46 @@ highlight 2: #ffe75e
     */
 
 
+* {
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+ box-sizing: border-box;
+}
+
+html,
+body {
+ height: 100%;
+ position: relative;
+}
+
+#appContainer {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px; /* height of your footer */
+}
+
+.main-page-footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #527318;
+    color: white;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ----- */
+
+
 #main-page .login-button {
     color: white;
     text-decoration: none;
@@ -126,16 +166,4 @@ highlight 2: #ffe75e
 
 
 
-/* this footer css may be moved to a separte Footer component at some point FYI */
 
-#main-page .main-page-footer {
-    background-color: #527318;
-    color: white;
-    height: 2.5rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    /* bottom: 0; */
-}

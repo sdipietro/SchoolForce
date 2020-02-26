@@ -75,8 +75,8 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 55px;
-    margin-bottom: 280px;
     box-sizing: border-box;
+    margin-bottom: 200px;
 }
 
 .login-form-box {

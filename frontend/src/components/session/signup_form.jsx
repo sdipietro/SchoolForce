@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Link } from 'react-router-dom';
 import "./signup_form.css";
 
 class SignupForm extends React.Component {
@@ -72,13 +71,7 @@ class SignupForm extends React.Component {
 
     return (
       <div className="signup-form-page">
-        <header className="signup-page-header">
-          <div className="signup-page-header-left">
-            <Link to="/">
-              <h1 className="header-logo">SchoolForce</h1>
-            </Link>
-          </div>
-        </header>
+        
         <div className="signup-form-container">
           <form onSubmit={this.handleSubmit} className="signup-form-box">
             <div className="form-title">Sign up</div>

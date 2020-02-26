@@ -1,22 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import "./main_page.css";
 
 class MainPage extends React.Component {
   render() {
     return (
       <div id="main-page">
-        <header className="login-page-header">
-          <div className="login-page-header-left">
-            <Link to="/">
-              <h1 className="header-logo">SchoolForce</h1>
-            </Link>
-          </div>
-          <div className="main-page-links">
-            <Link className="login-button" to="/login">Login</Link>
-            <Link className="signup-button" to="/signup">Signup</Link>
-          </div>
-        </header>
 
         <section className="main-page-body">
           <h2 className="main-page-body-main-hook">You're a school director and parents never read your emails?</h2>
@@ -39,9 +27,6 @@ class MainPage extends React.Component {
           </div>
         </section>
         
-        <footer className="main-page-footer">
-          <div> Copyright &copy; 2020 SchoolForce</div>
-        </footer>
       </div>
     );
   }
