@@ -22,7 +22,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push("/login");
+      this.props.history.push("/");
     }
 
     this.setState({ errors: nextProps.errors });
@@ -46,7 +46,18 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history);
+    //Jesse note: promise chain here necessary because otherwise this.props.login will run before this.props.signup has created a new user in the DB
+    this.props.signup(user, this.props.history).then(newUser => {
+        return this.props.login({ email: this.state.email, password: this.state.password })}
+      );
+  }
+
+  demoLogin() {
+    let user = {
+      email: "demo@fake.org",
+      password: "password"
+    }
+    this.props.login(user);
   }
 
   renderErrors() {
@@ -77,6 +88,8 @@ class SignupForm extends React.Component {
                 <a href="#/signup">Sign Up</a>
                 <a href="#/login">Log in</a>
               </div>
+              <button className="demo-login-button" onClick={() => this.demoLogin()}>Demo Login</button>
+
               <div className="input-fields">
                 <div className="input-fields-left">
                   <input
@@ -86,6 +99,23 @@ class SignupForm extends React.Component {
                     placeholder="First Name"
                     className="signup-input"
                   />
+                    <input
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.update("email")}
+                      placeholder="Email"
+                      className="signup-input"
+                    />
+                  <input
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                    placeholder="Password"
+                    className="signup-input"
+                  />
+             
+                </div>
+                <div className="input-fields-left">
                   <input
                     type="text"
                     value={this.state.lastName}
@@ -93,27 +123,12 @@ class SignupForm extends React.Component {
                     placeholder="Last Name"
                     className="signup-input"
                   />
-                  <input
-                    type="text"
-                    value={this.state.email}
-                    onChange={this.update("email")}
-                    placeholder="Email"
-                    className="signup-input"
-                  />
-                </div>
-                <div className="input-fields-left">
+             
                   <input
                     type="text"
                     value={this.state.mobile}
                     onChange={this.update("mobile")}
                     placeholder="Phone Number"
-                    className="signup-input"
-                  />
-                  <input
-                    type="password"
-                    value={this.state.password}
-                    onChange={this.update("password")}
-                    placeholder="Password"
                     className="signup-input"
                   />
                   <input
