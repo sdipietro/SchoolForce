@@ -25,14 +25,14 @@ export const logoutUser = () => ({
 });
 
 
-export const signup = user => dispatch => {
-  debugger
-  return APIUtil.signup(user).then(() => (
-    dispatch(receiveUserSignIn())
-  ), err => (
+export const signup = user => dispatch => (
+  APIUtil.signup(user).then(() => {
+    debugger
+    return dispatch(receiveUserSignIn())
+    }, err => (
     dispatch(receiveErrors(err.response.data))
   ))
-  };
+);
 
 export const login = user => dispatch => (
   APIUtil.login(user).then(res => {
@@ -49,7 +49,7 @@ export const login = user => dispatch => (
 
 
 export const logout = () => dispatch => {
-  localStorage.removeItem('jwtToken')
-  APIUtil.setAuthToken(false)
-  dispatch(logoutUser())
+  localStorage.removeItem('jwtToken');
+  APIUtil.setAuthToken(false);
+  dispatch(logoutUser());
 };

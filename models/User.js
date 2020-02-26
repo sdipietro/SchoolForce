@@ -3,14 +3,20 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     schoolId: {
-        type: Number,
-        required: true
+        type: Number
+
+        //making schoold ID not required for now
+        // required: true
     },
     firstName: {
         type: String,
         require: true
     },
     lastName: {
+        type: String,
+        require: true
+    },
+    email: {
         type: String,
         require: true
     },
