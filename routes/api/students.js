@@ -37,6 +37,7 @@ router.get('/:id', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
+        console.log(req);
         const { errors, isValid } = validateStudentInput(req.body);
 
         if (!isValid) {
@@ -46,15 +47,17 @@ router.post('/',
         const newStudent = new Student({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            parentId: req.user.id,
-            allergies: req.body.firstName,
-            specialNeeds: req.body.specialNeeds,
-            medicalConditions: req.body.medicalConditions,
-            gender: req.body.gender,
-            dateOfBirth: req.body.dateOfBirth,
-            startDate: req.body.startDate,
-            grade: req.body.grade
+            // parentId: req.user.id,
+            // allergies: req.body.firstName,
+            // specialNeeds: req.body.specialNeeds,
+            // medicalConditions: req.body.medicalConditions,
+            // gender: req.body.gender,
+            // dateOfBirth: req.body.dateOfBirth,
+            // startDate: req.body.startDate,
+            // grade: req.body.grade
         });
+
+        console.log(newStudent);
 
         newStudent.save().then(student => res.json(student));
     }
