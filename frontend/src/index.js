@@ -31,5 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const root = document.getElementById("root");
 
+  //putting these on window to test
+  window.store = store;
+  window.logout = () => store.dispatch(logout());
+
   ReactDOM.render(<Root store={store} />, root);
 });
