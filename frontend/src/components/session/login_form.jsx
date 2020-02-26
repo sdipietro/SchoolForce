@@ -17,12 +17,12 @@ class LoginForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      return this.props.history.push("/");
-    } else {
-      return this.setState({ errors: nextProps.errors });
+      this.props.history.push("/reminders");
     }
+    
+    this.setState({ errors: nextProps.errors });
   }
 
   componentWillUnmount() {
@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
   }
 
   demoLogin() {
-    this.state.demo = true;
+    this.setState({ demo: true });
   }
 
   renderErrors() {
