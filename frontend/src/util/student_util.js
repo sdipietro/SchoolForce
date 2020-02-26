@@ -9,6 +9,6 @@ export const getAllStudents = () => {
 };
 
 export const createStudent = data => {
-  debugger
+  
   return axios.post("/api/students", data);
 };

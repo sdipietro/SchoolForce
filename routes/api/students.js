@@ -38,7 +38,7 @@ router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         console.log(req);
-        debugger
+        
         const { errors, isValid } = validateStudentInput(req.body);
 
         if (!isValid) {
