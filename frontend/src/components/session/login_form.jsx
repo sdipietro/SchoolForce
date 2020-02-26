@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
     this.state = {
       email: "",
       password: "",
+      demo: false,
       errors: {}
     };
 
@@ -17,11 +18,15 @@ class LoginForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push("/main");
+    if (nextProps.signedIn === true) {
+      return this.props.history.push("/");
+    } else {
+      return this.setState({ errors: nextProps.errors });
     }
+  }
 
-    this.setState({ errors: nextProps.errors });
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   update(field) {
@@ -33,21 +38,21 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let user = Object.assign({}, this.state);
+    let demo = {
+      email: "demo@fake.org",
+      password: "password"
+    }
 
-    let user = {
-      email: this.state.email,
-      password: this.state.password
-    };
-
-    this.props.login(user);
+    if (this.state.demo === true) {
+      return this.props.login(demo)
+    } else {
+      return this.props.login(user)
+    }
   }
 
   demoLogin() {
-    let user = {
-      email: "demo@fake.org",
-      password: "password"
-    }  
-    this.props.login(user);
+    this.state.demo = true;
   }
 
   renderErrors() {
@@ -78,7 +83,7 @@ class LoginForm extends React.Component {
                 <a href="#/signup">Sign Up</a>
                 <a href="#/login">Log in</a>
               </div>
-              <button className="demo-login-button" onClick={()=>this.demoLogin()}>Demo Login</button>
+              <button className="demo-login-button" onClick={() => this.demoLogin()}>Demo Login</button>
               <label>
                 <input
                   type="text"
