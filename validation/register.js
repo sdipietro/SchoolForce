@@ -3,17 +3,17 @@ const validText = require('./valid-text');
 
 
 module.exports = function validateRegisterInput(data) {
-    let errors = {};
+  let errors = {};
 
     data.firstName = validText(data.firstName) ? data.firstName : '';
     data.lastName = validText(data.lastName) ? data.lastName : '';
     data.email = validText(data.email) ? data.email : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
-    // data.mobile = validText(data.mobile) ? data.mobile : '';
-    // data.schoolId = typeof data.schoolId === 'integer' ? data.schoolId : '';
+    data.mobile = validText(data.mobile) ? data.mobile : '';
+  
 
-    if (!Validator.isLength(data.firstName, { min: 3, max: 20})) {
+      if (!Validator.isLength(data.firstName, { min: 3, max: 20})) {
         errors.firstName = 'Please enter your real name';
       };
 
@@ -61,8 +61,8 @@ module.exports = function validateRegisterInput(data) {
         errors.mobile = 'Mobile is invalid';
       }
 
-      if (Validator.isEmpty(data.schoolId)) {
-        errors.schoolId = 'School ID field is required';
+      if (!Validator.isLength(data.mobile, { min: 10, max: 10 })) {
+        errors.mobile = 'Mobile is invalid';
       }
 
       return {
@@ -74,6 +74,3 @@ module.exports = function validateRegisterInput(data) {
     
 
 
-
-
-    

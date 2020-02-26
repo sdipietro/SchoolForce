@@ -34,8 +34,9 @@ export const fetchAllStudents = () => dispatch => (
     .catch(err => console.log(err))
 );
 
-export const createNewStudent = data => dispatch => (
-  createStudent(data)
+export const createNewStudent = data => dispatch => {
+  debugger
+  return createStudent(data)
     .then(student => dispatch(receiveNewStudent(student)))
     .catch(err => console.log(err))
-);
+};

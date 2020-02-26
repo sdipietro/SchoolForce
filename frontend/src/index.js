@@ -6,6 +6,7 @@ import jwt_decode from "jwt-decode";
 
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
+import { createNewStudent } from "./actions/student_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //putting these on window to test
   window.store = store;
   window.logout = () => store.dispatch(logout());
+  window.createNewStudent = data => store.dispatch(createNewStudent(data));
 
   ReactDOM.render(<Root store={store} />, root);
 });
