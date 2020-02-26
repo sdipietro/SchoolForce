@@ -1,0 +1,138 @@
+/* COLOR PALETTE: https://colorhunt.co/palette/172373 */
+
+/* 
+primary green: #527318 
+secondary green: #899857
+highlight 1: #feb72b
+highlight 2: #ffe75e
+    */
+
+
+#main-page .login-button {
+    color: white;
+    text-decoration: none;
+    margin-right: 40px;
+    font-size: 16px;
+    transition: background-color 0.5s;
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#main-page .signup-button {
+    color: white;
+    text-decoration: none;
+    margin-right: 40px;
+    font-size: 16px;
+    transition: background-color 0.5s;
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#main-page .login-button:hover {
+    color: gray;
+    background-color: #feb72b;
+}
+
+#main-page .signup-button:hover {
+    color: gray;
+    background-color: #feb72b;
+}
+
+#main-page .main-page-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
+#main-page .main-page-body .main-page-body-main-hook {
+    font-size: 30px;
+    color: #527318;
+}
+
+#main-page .main-page-body .main-page-body-frustration-image {
+    width: 500px;
+    border-radius: 4px;
+}
+
+#main-page .main-page-body .main-page-body-descriptions {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-page .main-page-body .main-page-body-second-third-hooks {
+    display: flex;
+}
+
+#main-page .main-page-body .main-page-body-second-third-hooks h3 {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-page .main-page-body .main-page-body-happy-parent-img {
+    width: 300px;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+#main-page .main-page-body .main-page-body-secondary-hook {
+    font-size: 24px;
+    color: #feb72b;
+    width: 400px;
+    margin-right: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-page .main-page-body .main-page-body-calm-computer-img {
+    width: 400px;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+#main-page .main-page-body .main-page-body-third-hook {
+    font-size: 24px;
+    color: #feb72b;
+    width: 400px;
+    margin-left: 100px;
+}
+
+#main-page .main-page-body .main-body-page-student-focus-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-page .main-page-body .main-page-body-fourth-hook {
+    font-size: 24px;
+    color: #527318;
+}
+
+#main-page .main-page-body .child-picture {
+    width: 500px;
+    border-radius: 4px;
+}
+
+
+
+/* this footer css may be moved to a separte Footer component at some point FYI */
+
+#main-page .main-page-footer {
+    background-color: #527318;
+    color: white;
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    /* bottom: 0; */
+}

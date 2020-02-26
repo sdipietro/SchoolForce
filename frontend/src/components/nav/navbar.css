@@ -19,3 +19,16 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+
+.login-page-header {
+    background-color: green;
+}
+
+
+/* This was Jesse trying to figure out where the NavBar is actually rendering */
+/* #nav-bar-container {
+    background-color: green;
+} */
+

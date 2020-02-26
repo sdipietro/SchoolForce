@@ -13,14 +13,16 @@ body {
 
 .login-page-header {
     width: 100%;
-    height: 42px;
-    margin-top: 19px;
+    height: 50px;
+    /* Jesse note: commented this out so header hugs top of page */
+    /* margin-top: 19px; */
     padding: 0px 32px 0px 8px;
     display: flex;
     justify-content: space-between;
     -webkit-box-align: center;
     align-items: center;
     box-sizing: border-box;
+    background-color: #527318;
 }
 
 .login-page-header-left {
@@ -28,7 +30,7 @@ body {
     font-family: sofia-pro, sans-serif;
     padding-left: 20px;
     text-decoration: none;
-    color: black;
+    color: white;
     display: flex;
     cursor: pointer;
 }
@@ -68,7 +70,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 310px;
+    width: 500px;
     margin: 0 auto;
 }
 
