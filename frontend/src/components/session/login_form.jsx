@@ -42,6 +42,14 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
+  demoLogin() {
+    let user = {
+      email: "demo@fake.org",
+      password: "password"
+    }  
+    this.props.login(user);
+  }
+
   renderErrors() {
     return (
       <ul>
@@ -70,6 +78,7 @@ class LoginForm extends React.Component {
                 <a href="#/signup">Sign Up</a>
                 <a href="#/login">Log in</a>
               </div>
+              <button className="demo-login-button" onClick={()=>this.demoLogin()}>Demo Login</button>
               <label>
                 <input
                   type="text"
