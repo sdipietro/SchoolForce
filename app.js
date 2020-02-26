@@ -41,6 +41,7 @@ app.use(bodyParser.json());
 
 
 app.use("/api/users", users);
+app.use("/api/students", students);
 // app.use("/api/tweets", tweets);
 
 
