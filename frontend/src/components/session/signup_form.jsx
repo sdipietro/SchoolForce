@@ -10,7 +10,7 @@ class SignupForm extends React.Component {
       email: "",
       firstName: "",
       lastName: "",
-      mobile: "",
+      phoneNumber: "",
       password: "",
       password2: "",
       errors: {}
@@ -41,7 +41,7 @@ class SignupForm extends React.Component {
       email: this.state.email,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      mobile: this.state.mobile,
+      phoneNumber: this.state.phoneNumber,
       password: this.state.password,
       password2: this.state.password2
     };
@@ -104,8 +104,8 @@ class SignupForm extends React.Component {
                 <div className="input-fields-left">
                   <input
                     type="text"
-                    value={this.state.mobile}
-                    onChange={this.update("mobile")}
+                    value={this.state.phoneNumber}
+                    onChange={this.update("phoneNumber")}
                     placeholder="Phone Number"
                     className="signup-input"
                   />
