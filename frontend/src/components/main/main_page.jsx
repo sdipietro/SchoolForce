@@ -19,7 +19,7 @@ class MainPage extends React.Component {
         </header>
 
         <section className="main-page-body">
-          <h2 className="main-page-body-main-hook">You're a school director and your students' parents never read your emails?</h2>
+          <h2 className="main-page-body-main-hook">You're a school director and parents never read your emails?</h2>
           <img className="main-page-body-frustration-image" src="https://images.unsplash.com/photo-1552345386-6690de5b2c09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"/>
           <div className="main-page-body-descriptions">
             <div className="main-page-body-second-third-hooks">
