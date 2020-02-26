@@ -6,6 +6,33 @@ body {
     margin: 0;
 }
 
+.demo-login-button {
+    width: 500px;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    border-radius: 2px;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    border: none;    
+    color: gray;
+    background-color: #ffe75e;
+}
+
+.demo-login-button:hover {
+    color: white;
+    background-color: #feb72b;
+    transition: background-color 0.5s;
+}
+
 .login-form-page {
     box-sizing: border-box;
     display: block;
@@ -114,10 +141,10 @@ body {
     outline: none;
     pointer-events: initial !important;
     -webkit-appearance: none;
-    margin: 0;
+    margin-top: 20px;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(22,24,35,0.2);
-    font-size: 11px;
+    font-size: 14px;
     font-family: sofia-pro, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -132,7 +159,7 @@ body {
 .session-submit {
     color: rgba(22,24,35,0.3);
     font-weight: 500;
-    font-size: 12px;
+    font-size: 16px;
     background-color: rgba(22,24,35,0.06);
     display: flex;
     align-items: center;
@@ -146,4 +173,10 @@ body {
     margin-top: 30px;
     cursor: pointer;
     border: none;
+    transition: background-color 0.5s;
+}
+
+.session-submit:hover {
+    background-color: #feb72b;
+    color: white;
 }

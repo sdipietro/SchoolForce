@@ -69,9 +69,9 @@ body {
 
 .signup-form {
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    width: 500px;
+    width: 800px;
     margin: 0 auto;
 }
 
@@ -81,6 +81,7 @@ body {
     box-sizing: border-box;
     height: 40.5px;
     display: flex;
+    width: 500px;
 }
 
 .form-header-signup a {
@@ -102,11 +103,16 @@ body {
 
 .input-fields {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
 }
 
 .input-fields-left {
     /* margin-right: 20px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .form-header-signup a:first-of-type {
@@ -116,7 +122,7 @@ body {
 
 .signup-input {
     height: 48px;
-    width: 100%;
+    width: 90%;
     padding: 0;
     border: none;
     caret-color: green;
@@ -124,14 +130,13 @@ body {
     outline: none;
     pointer-events: initial !important;
     -webkit-appearance: none;
-    margin: 0;
+    margin-top: 30px;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(22,24,35,0.2);
-    font-size: 11px;
+    font-size: 14px;
     font-family: sofia-pro, sans-serif;
     font-style: normal;
     font-weight: 400;
-    text-align: center;
 }
 
 .session-error-messages {
@@ -141,9 +146,10 @@ body {
 }
 
 .session-submit {
+    width: 500px;
     color: rgba(22,24,35,0.3);
     font-weight: 500;
-    font-size: 12px;
+    font-size: 16px;
     background-color: rgba(22,24,35,0.06);
     display: flex;
     align-items: center;
