@@ -1,14 +1,68 @@
-.NavBar {
+#nav-bar-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #527318;
+    border-bottom: 1px solid black;
+    font-family: sofia-pro, sans-serif;
 }
 
-.NavBar button {
-    height: 20px;
+#nav-bar-container .navbar-logo {
+    color: white;
+    margin-left: 50px;
+    font-family: sofia-pro, sans-serif;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.Links1 {
+
+#nav-bar-container .logoutLink {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    margin-right: 50px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    /* IMPROVEMENT: some kind of non-silly shadowing */
+    /* box-shadow: 4px 2px 2px #ffe75e; */
+}
+
+
+#nav-bar-container .logoutLink:hover {
+    cursor: pointer;
+}
+
+#nav-bar-container .signupLink {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    margin-right: 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+}
+
+#nav-bar-container .loginLink {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    margin-right: 50px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+}
+
+
+/* Jeesse notee: not sure any of the below actually affeects anything */
+/* .Links1 {
     width: 100px;
     display: flex;
     justify-content: space-between;
@@ -18,17 +72,11 @@
     width: 400px;
     display: flex;
     justify-content: space-between;
-}
+} */
 
 
-
-.login-page-header {
-    background-color: green;
-}
-
-
-/* This was Jesse trying to figure out where the NavBar is actually rendering */
-/* #nav-bar-container {
+/* .login-page-header {
     background-color: green;
 } */
+
 

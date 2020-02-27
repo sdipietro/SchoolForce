@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import "./main_page.css";
 
+
 const MainPage = ({ currentUser, logout }) => {
+
 
     // debugger
     // if (currentUser) {
@@ -22,6 +23,7 @@ const MainPage = ({ currentUser, logout }) => {
                 Signup
               </Link>
             </div>
+
           </header>
 
           <section className="main-page-body">
@@ -73,7 +75,7 @@ const MainPage = ({ currentUser, logout }) => {
           </footer>
         </div>
       );
-    // }
+    // when we comment in the if statment }
 }
 
 export default MainPage;

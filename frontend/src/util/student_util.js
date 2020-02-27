@@ -9,5 +9,6 @@ export const getAllStudents = () => {
 };
 
 export const createStudent = data => {
-  return axios.post("/api/students/", data);
+  
+  return axios.post("/api/students", data);
 };
