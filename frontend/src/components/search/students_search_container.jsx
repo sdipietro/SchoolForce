@@ -1,26 +1,19 @@
 import { connect } from 'react-redux';
-import StudentsIndex from  './students_index.jsx'
+import StudentsIndex from  './students_search.jsx'
 import fetchStudents from '';
 import {withRouter} from 'react-router-dom';
 
 
-const mapStateToProps = ({entities: {students}}) => (
+const mapStateToProps = ({entities: {students}}) => 
+    (
     {
-        students: students,
-        query: {
-            query: '',
-            allergies: false,
-            disabilitie: false,
-            medicalConditions: false,
-            gender: '',
-            grade: ''
-        }
+        students: Object.values(students)
     }
 )
 
-const mapDispatchToProps = (fetchStudents) => (
+const mapDispatchToProps = (dispatch) => (
     {
-        fetchStudents: fetchStudents
+        fetchStudents: () => dispatch(fetchStudents())
     }
 )
 
