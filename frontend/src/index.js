@@ -8,6 +8,7 @@ import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
 
 import { createNewStudent } from "./actions/student_actions";
+import { createReminder } from "./actions/reminder_actions";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.logout = () => store.dispatch(logout());
 
   window.createNewStudent = data => store.dispatch(createNewStudent(data));
+  window.createReminder = data => store.dispatch(createReminder(data));
 
 
   ReactDOM.render(<Root store={store} />, root);

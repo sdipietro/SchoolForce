@@ -48,14 +48,14 @@ router.post('/',
         const newStudent = new Student({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            // parentId: req.user.id,
-            // allergies: req.body.firstName,
-            // specialNeeds: req.body.specialNeeds,
-            // medicalConditions: req.body.medicalConditions,
-            // gender: req.body.gender,
-            // dateOfBirth: req.body.dateOfBirth,
-            // startDate: req.body.startDate,
-            // grade: req.body.grade
+            parentId: req.user.id,
+            allergies: req.body.firstName,
+            specialNeeds: req.body.specialNeeds,
+            medicalConditions: req.body.medicalConditions,
+            gender: req.body.gender,
+            dateOfBirth: req.body.dateOfBirth,
+            startDate: req.body.startDate,
+            grade: req.body.grade
         });
 
         console.log(newStudent);

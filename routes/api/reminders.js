@@ -34,6 +34,8 @@ router.get('/:title', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
+        console.log(req)
+
         const { errors, isValid } = validateReminderInput(req.body);
 
         if (!isValid) {
@@ -47,6 +49,8 @@ router.post('/',
             authorId: req.user.id,
             createdDate: req.body.createdDate
         });
+
+        console.log(newReminder);
 
         newReminder.save().then(reminder => res.json(reminder));
     }

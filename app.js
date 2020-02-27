@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/students", students);
-
+app.use("/api/reminders", reminders);
 
 //tell Express to start a socket and listen for connections on the path.
 const port = process.env.PORT || 5000;
