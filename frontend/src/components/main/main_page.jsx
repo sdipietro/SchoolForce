@@ -1,5 +1,6 @@
 import React from "react";
 import "./main_page.css";
+import { Link } from "react-router-dom";
 
 
 const MainPage = ({ currentUser, logout }) => {
