@@ -40,8 +40,8 @@ app.use("/api/reminders", reminders);
 
 
 //tell Express to start a socket and listen for connections on the path.
-
-app.listen(config.port, () => console.log(`Server is running on port ${config.port}`));
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 
 

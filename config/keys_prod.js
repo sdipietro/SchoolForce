@@ -1,8 +1,5 @@
 var config = {};
 
-// HTTP Port to run our web application
-config.port = process.env.PORT || 5000;
-
 // mongoDB
 config.mongoURI = process.env.MONGO_URI;
 
