@@ -15,13 +15,6 @@ export const receiveAllStudents = students => ({
   students
 });
 
-// export const receiveNewStudent = student => {
-//   debugger
-//   return {
-//   type: RECEIVE_NEW_STUDENT,
-//   student
-// }};
-
 export const fetchStudent = (id) => dispatch => (
   APIUtil.getStudent(id)
     .then(student => dispatch(receiveStudent(student)))
