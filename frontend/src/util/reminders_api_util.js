@@ -1,15 +1,16 @@
 import axios from "axios";
 
-export const getReminder = id => {
-  return axios.get(`/api/reminders/${id}`);
+export const getReminder = title => {
+  return axios.get(`/api/reminders/${title}`);
 };
 
 export const getAllReminders = () => {
   return axios.get("/api/reminders");
 };
 
-export const creatReminder = data => {
-  return axios.post("/api/reminders", data);
+export const createReminder = data => {
+  debugger
+  return axios.post("/api/reminders/new", data);
 };
 
 export const deleteReminder = id => {

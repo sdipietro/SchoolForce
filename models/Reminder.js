@@ -10,20 +10,20 @@ const ReminderSchema = new Schema({
         type: String,
         required: true
     },
-    parentId: {
-        type: [Schema.Types.ObjectId],
-        ref: 'users',
-        required: true
-    },
-    authorId: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-        required: true
-    },
-    createdDate: {
-        type: Date,
-        default: Date.now
-    }
+    // parentId: {
+    //     type: [Schema.Types.ObjectId],
+    //     ref: 'users',
+    //     required: true
+    // },
+    // authorId: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'users',
+    //     required: true
+    // },
+    // createdDate: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 });
 
 module.exports = Reminder = mongoose.model('reminder', ReminderSchema);
