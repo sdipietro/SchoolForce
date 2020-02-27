@@ -15,8 +15,8 @@ router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 router.get('/current', config.passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
       id: req.user.id,
-      handle: req.user.handle,
-      email: req.user.email
+      email: req.user.email,
+      admin: req.user.admin
     });
   })
 
@@ -41,7 +41,7 @@ router.post('/register', (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             mobile: req.body.mobile,
-            // schoolId: req.body.schoolId,
+            schoolId: req.body.schoolId,
             email: req.body.email,
             password: req.body.password,
             admin: false
@@ -54,7 +54,16 @@ router.post('/register', (req, res) => {
                 newUser.password = hash;
                 newUser.save()
                     .then(user => {
-                        const payload = { id: user.id, handle: user.email };
+                        const payload = {
+                          id: user.id,
+                          firstName: user.firstName,
+                          lastName: user.lastName,
+                          email: user.email,
+                          mobile: user.mobile,
+                          schoolId: user.schoolId,
+                          adminStatus: user.admin
+                        };
+
                         //key will expire in an hour
                         jwt.sign(payload, config.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                             res.json({
@@ -94,7 +103,15 @@ router.post('/login', (req, res) => {
     bcrypt.compare(password, user.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: user.id, name: user.email};
+            const payload = {
+              id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email,
+              mobile: user.mobile,
+              schoolId: user.schoolId,
+              adminStatus: user.admin
+            };
 
             jwt.sign(
                 payload,

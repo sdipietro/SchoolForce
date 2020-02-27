@@ -12,7 +12,8 @@ class SignupForm extends React.Component {
       mobile: "",
       password: "",
       password2: "",
-      demo: false,
+      demoParent: false,
+      demoAdmin: false,
       errors: {}
     };
 
@@ -22,13 +23,12 @@ class SignupForm extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
       this.props.history.push("/reminders");
-    } 
-      
+    }
+
     this.setState({ errors: nextProps.errors });
   }
 
   componentWillUnmount() {
-
     this.props.clearErrors();
   }
 
@@ -42,23 +42,38 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = Object.assign({}, this.state);
-    let demo = {
-      email: "demo@fake.org",
+    let demoAdmin = {
+      email: "demoAdmin@fake.org",
       password: "password"
-    }
+    };
 
-    if (this.state.demo === true) {
-      return this.props.login(demo)
+    let demoParent = {
+      email: "demoparent@gmail.com",
+      password: "12345678"
+    };
+
+    if (this.state.demoAdmin === true) {
+      return this.props.login(demoAdmin);
+    } else if (this.state.demoParent === true) {
+      return this.props.login(demoParent);
     } else {
-      return this.props.signup(user, this.props.history); 
+      return this.props.signup(user, this.props.history);
     }
   }
 
-  demoLogin() {
-    this.setState({ demo: true });
+  demoParentLogin() {
+    this.setState({ demoParent: true });
+  }
+
+  demoAdminLogin() {
+    this.setState({ demoAdmin: true });
   }
 
   renderErrors() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7333f436f875caa56b881d4087f681f160288cc
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
@@ -69,10 +84,8 @@ class SignupForm extends React.Component {
   }
 
   render() {
-
     return (
       <div className="signup-form-page">
-        
         <div className="signup-form-container">
           <form onSubmit={this.handleSubmit} className="signup-form-box">
             <div className="form-title">Sign up</div>
@@ -82,8 +95,19 @@ class SignupForm extends React.Component {
                 <a href="#/login">Log in</a>
               </div>
 
-            <button className="demo-login-button" onClick={() => this.demoLogin()}>Demo Login</button>
-              
+              <button
+                className="demo-login-button"
+                onClick={() => this.demoAdminLogin()}
+              >
+                Demo Login as Admin
+              </button>
+              <button
+                className="demo-login-button"
+                onClick={() => this.demoParentLogin()}
+              >
+                Demo Login as Parent
+              </button>
+
               <div className="input-fields">
                 <div className="input-fields-left">
                   <input
@@ -93,13 +117,13 @@ class SignupForm extends React.Component {
                     placeholder="First Name"
                     className="signup-input"
                   />
-                    <input
-                      type="text"
-                      value={this.state.email}
-                      onChange={this.update("email")}
-                      placeholder="Email"
-                      className="signup-input"
-                    />
+                  <input
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.update("email")}
+                    placeholder="Email"
+                    className="signup-input"
+                  />
                   <input
                     type="password"
                     value={this.state.password}
@@ -107,7 +131,6 @@ class SignupForm extends React.Component {
                     placeholder="Password"
                     className="signup-input"
                   />
-             
                 </div>
                 <div className="input-fields-left">
                   <input
@@ -117,7 +140,7 @@ class SignupForm extends React.Component {
                     placeholder="Last Name"
                     className="signup-input"
                   />
-             
+
                   <input
                     type="text"
                     value={this.state.mobile}
@@ -134,7 +157,9 @@ class SignupForm extends React.Component {
                   />
                 </div>
               </div>
-              <div className="session-error-messages">{this.renderErrors()}</div>
+              <div className="session-error-messages">
+                {this.renderErrors()}
+              </div>
               <input type="submit" value="Sign up" className="session-submit" />
             </div>
           </form>
