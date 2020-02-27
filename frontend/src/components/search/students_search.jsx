@@ -65,14 +65,10 @@ class StudentsSearch extends React.Component {
     studentFilters (student) {
         
         let result = true;
-        debugger
         if (student) {
-            debugger
             result = (student.firstName.toLowerCase().indexOf(this.state.query.text) !== -1 || 
                     student.lastName.toLowerCase().indexOf(this.state.query.text) !== -1);
-        }
-                  debugger
-        
+        } 
 
         if (this.state.allergies || this.state.disabilities || this.state.medicalConditions) { 
             result = (Boolean(student.allergies.first) === this.state.allergies || 

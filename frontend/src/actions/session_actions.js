@@ -52,18 +52,6 @@ export const login = user => dispatch => {
     })
   };
 
-  // export const login = user => dispatch => {
-  //   debugger
-  //   APIUtil.login(user).then(
-  //     user => {
-  //       return dispatch(receiveCurrentUser(user));
-  //     },
-  //     err => {
-  //       return dispatch(receiveErrors(err.responseJSON));
-  //     }
-  //   );
-  // }
-
 export const logout = () => dispatch => {
   localStorage.removeItem('jwtToken');
   APIUtil.setAuthToken(false);

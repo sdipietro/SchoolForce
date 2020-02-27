@@ -5,13 +5,12 @@ import { fetchAllUsers} from '../../actions/user_actions';
 import {withRouter} from 'react-router-dom';
 
 
-const mapStateToProps = ({students}, {users}) => 
-    (
-    {
-        students: students,
-        users: users
+const mapStateToProps = (state) => {
+    return {
+        students: state.entities.students,
+        users: state.entities.users
     }
-)
+}
 
 const mapDispatchToProps = (dispatch) => (
     {
