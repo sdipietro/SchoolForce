@@ -1,0 +1,66 @@
+#admin-search-container {
+    font-family: sofia-pro, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#admin-search-container .studentNameFilter {
+    font-size: 24px;
+    height: 20px;
+    width: 100%;
+    margin: 40px;
+    font-weight: 500;
+}
+
+#admin-search-container .studentNameFilterTextBox {
+    font-size: 16px;
+    height: 30px;
+    margin-left: 20px;
+    width: 400px;
+    border-radius: 2px;
+}
+
+#admin-search-container .studentChecks {
+    margin: 20px;
+}
+
+#admin-search-container .checkboxContainer {
+    margin: 20px;
+    font-size: 16px;
+}
+
+/* if we want to make checkboxes more exciting: */
+#admin-search-container .checkbox {
+    margin-left: 5px;
+}
+
+#admin-search-container .genderSelect {
+    margin-left: 40px;
+    width: 100px;
+    font-size: 14px;
+}
+
+#admin-search-container .gradeContainer {
+    margin-left: 40px;
+    font-size: 16px;
+}
+
+#admin-search-container .gradeInput {
+    margin-left: 6px;
+    font-size: 12px;
+}
+
+#admin-search-container .adminCreateReminderLink {
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #899857;
+    color: white;
+    border-radius: 4px;
+    padding: 10px;
+    margin-left: 40px;
+}
+
+#admin-search-container .adminCreateReminderLink:hover {
+    background-color: #feb72b;
+}

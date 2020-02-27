@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import students from "./students_reducer";
-import users from "./users_reducer";
-import reminders from "./reminders_reducer";
+import studentsReducer from "./students_reducer";
+import usersReducer from "./users_reducer";
+import remindersReducer from "./reminders_reducer";
 
 const EntitiesReducer = combineReducers({
-  students,
-  users,
-  reminders
+  students: studentsReducer,
+  users: usersReducer,
+  reminders: remindersReducer
 });
 
 export default EntitiesReducer;
