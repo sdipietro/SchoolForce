@@ -1,6 +1,6 @@
 import { RECEIVE_ALL_REMINDERS } from "../actions/reminder_actions";
 
-const RemindersReducer = (state = { reminders: {} }, action) => {
+const RemindersReducer = (state = {reminders: {}}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   switch (action.type) {

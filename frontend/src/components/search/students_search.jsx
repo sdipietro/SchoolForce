@@ -1,7 +1,7 @@
 import React from 'react'
 import StudentItem from './student_item'
 import {Link} from 'react-router-dom'
-
+import "./students_search.css";
 
 class StudentsSearch extends React.Component {
 
@@ -18,10 +18,6 @@ class StudentsSearch extends React.Component {
             },
             selectedStudents: {}
         }
-        // this.students = this.props.students.students;
-        this.fetchAllStudents = this.props.fetchAllStudents;
-        this.selectedStudents = this.state.selectedStudents;
-        // this.query = this.props.query;
         this.filterUpdate = this.filterUpdate.bind(this);
         this.handleStudentCheck = this.handleStudentCheck.bind(this);
     }
@@ -43,24 +39,21 @@ class StudentsSearch extends React.Component {
     }
 
     handleStudentCheck (student) {
-       
-        if (this.selectedStudents[student.id]) {
-            let newState = delete this.selectedStudents;
-            newState = Object.assign({}, this.selectedStudents, newState);
+        if (this.state.selectedStudents[student._id]) {
+            let newSelectedStudents = delete this.state.selectedStudents[student._id];
+            newSelectedStudents = Object.assign({}, this.state.selectedStudents, newSelectedStudents);
+            let newState = Object.assign({}, this.state, {selectedStudents: newSelectedStudents })
             this.setState(newState);
         } else {
-            let newState = Object.assign({}, this.selectedStudents, {[student.id]: student});
+            let newSelectedStudents = Object.assign({}, this.state.selectedStudents, {[student._id]: student});
+            let newState = Object.assign({}, this.state, {selectedStudents: newSelectedStudents})
             this.setState(newState);
         }
     }
 
     componentDidMount() {
-        // this.fetchStudents(this.props.match.params.schoolId);
-        // optional: change so that it only fetches students of the school + need to change schema
         this.props.fetchAllStudents();
-
-        // to comment in later to show parents
-        // this.props.fetchAllUsers();
+        this.props.fetchAllUsers();
     }
 
     studentFilters (student) {
@@ -97,63 +90,77 @@ class StudentsSearch extends React.Component {
 
     render () {
         let filteredStudents =[];
-        let filteredUsers = [];
-        //nonte: need to restructure the students reducer at some point
-        if (this.props.students.students[0]) {
-            filteredStudents = this.props.students.students.filter( (student) => {
+        let filteredParentsArr = [];
+        if (this.props.students[0]) {
+            filteredStudents = this.props.students.filter( (student) => {
+
                 return this.studentFilters(student);
             })
     
-            // filteredUsers = filteredStudents.filter ( student => {
-            //     return  [this.props.users[student.parent1Id], this.props.users[student.parent2Id]];
-            // });
+            filteredParentsArr = Object.values(this.state.selectedStudents).map ( student => {
+                //improvement opportunity - avoid a n^2 query
+                let oneStudentParentsArr = []
+                for (let index = 0; index < student.parentId.length; index++) {
+                    oneStudentParentsArr.push(this.props.users[student.parentId[index]]);
+                }
+                return oneStudentParentsArr;
+            });
         }
         
         return ( 
-            
-            <div className='studentSelect'>
-            <div className='studentFilter'>Student Name Filter
-                <input type="text" value={`${this.state.query.text}`} onChange={this.filterUpdate('text')} /> 
-            </div>
+            <div id='admin-search-container'>
+                {/* Jesse note: not sure if we want a title or not on search page */}
+                {/* <title className="adminSearchTitle">Filter the students whose parents you want to message</title> */}
+                <div className='studentNameFilter'>Student Name Filter:
+                    <input className='studentNameFilterTextBox' type="text" placeholder="try 'sally' or 'smith'" value={`${this.state.query.text}`} onChange={this.filterUpdate('text')} /> 
+                </div>
+                <Link
+                    className="adminCreateReminderLink" 
+                    to={{
+                        pathname: "/draftReminder",
+                        state: {
+                            users:{ filteredParentsArr }
+                        }
+                    }}>Draft Reminder</Link>
 
-            <div className='studentChecks'>
-                <label>Include Allergies Search?
-                    <input type="checkbox" name='allergies' onChange={this.handleFilterCheck('allergies')}/>
-                </label>
+                <div className='studentChecks'>
+                    <label className="checkboxContainer">Include Allergies Search?
+                        <input className="checkbox" type="checkbox" name='allergies' onChange={this.handleFilterCheck('allergies')}/>
+                    </label>
 
-                <label>Include Special Needs Search?
-                    <input type="checkbox" name='specialNeeds' onChange={this.handleFilterCheck('specialNeeds')}/>
-                </label>
+                    <label className="checkboxContainer">Include Special Needs Search?
+                        <input className="checkbox" type="checkbox" name='specialNeeds' onChange={this.handleFilterCheck('specialNeeds')}/>
+                    </label>
 
-                <label>Include Medical Conditions Search?
-                    <input type="checkbox" name='medicalConditions' onChange={this.handleFilterCheck('medicalConditions')}/>
-                </label>
-            </div>
+                    <label className="checkboxContainer">Include Medical Conditions Search?
+                        <input className="checkbox" type="checkbox" name='medicalConditions' onChange={this.handleFilterCheck('medicalConditions')}/>
+                    </label>
+                </div>
 
-            <div className='studentoptions'>
-                <select className='gender' onChange={this.filterUpdate('gender')}>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-                <label>Grade
-                    <input type="text" value={`${this.state.query.grade}`} onChange={this.filterUpdate('grade')}></input>
-                </label>
-            </div>
+                <div className='studentoptions'>
+                    <select className='genderSelect' onChange={this.filterUpdate('gender')}>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label className="gradeContainer">Grade:
+                        <input placeholder="try '4' or '6'" className="gradeInput"type="text" value={`${this.state.query.grade}`} onChange={this.filterUpdate('grade')}></input>
+                    </label>
+                </div>
 
-            <div className='studentIndex'>
-                <ul>
-                { filteredStudents.map ( student => (
-                    <StudentItem 
-                    student={student} 
-                    handleStudentCheck={this.handleStudentCheck}
-                    key={student._id}
-                    />)
-                    )
-                }
-                </ul>
-            </div>
-            <Link to={`/reminders`} users={filteredUsers} />
+                <div className='studentIndex'>
+                    <ul>
+                    { filteredStudents.map ( student => (
+                        <StudentItem 
+                        student={student} 
+                        handleStudentCheck={this.handleStudentCheck}
+                        selectedStudents={this.state.selectedStudents}
+                        key={student._id}
+                        />)
+                        )
+                    }
+                    </ul>
+                </div>
         </div>
         )
     }
