@@ -5,7 +5,7 @@ import {
 } from "../actions/student_actions";
 
 const StudentsReducer = (
-  state = {},
+  state = {students:{}},
   action
 ) => {
   Object.freeze(state);
