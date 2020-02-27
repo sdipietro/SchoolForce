@@ -18,25 +18,26 @@ class StudentsSearch extends React.Component {
             },
             selectedStudents: {}
         }
-        this.students = this.props.students;
-        this.fetchStudents = this.props.fetchStudents;
+        // this.students = this.props.students.students;
+        this.fetchAllStudents = this.props.fetchAllStudents;
         this.selectedStudents = this.state.selectedStudents;
-        this.query = this.props.query;
+        // this.query = this.props.query;
         this.filterUpdate = this.filterUpdate.bind(this);
         this.handleStudentCheck = this.handleStudentCheck.bind(this);
     }
 
    filterUpdate (field) {
         return e => {
-            let newState = Object.assign({}, this.state.query, {[field]: e.target.value});
+            let newQuery = Object.assign({}, this.state.query, {[field]: e.target.value});
+            let newState = Object.assign({}, this.state, {query: newQuery})
             this.setState(newState);
         }
     };
 
     handleFilterCheck (field) {
         return () => {
-        let newState = Object.assign({}, this.state.query, {[field]: !this.state.field});
-        this.setState(newState);
+            let newState = Object.assign({}, this.state.query, {[field]: !this.state.field});
+            this.setState(newState);
         }
     }
 
@@ -55,15 +56,22 @@ class StudentsSearch extends React.Component {
     componentDidMount() {
         // this.fetchStudents(this.props.match.params.schoolId);
         // optional: change so that it only fetches students of the school + need to change schema
-        this.fetchStudents()
+        this.props.fetchAllStudents();
+
+        // to comment in later to show parents
+        // this.props.fetchAllUsers();
     }
 
     studentFilters (student) {
         
-        let result = false;
-        
-        result = (student.firstName.toLowerCase.indexOf(this.state.query.text) !== -1 || 
-                  student.firstName.toLowerCase.indexOf(this.state.query.text) !== -1);
+        let result = true;
+        debugger
+        if (student) {
+            debugger
+            result = (student.firstName.toLowerCase().indexOf(this.state.query.text) !== -1 || 
+                    student.lastName.toLowerCase().indexOf(this.state.query.text) !== -1);
+        }
+                  debugger
         
 
         if (this.state.allergies || this.state.disabilities || this.state.medicalConditions) { 
@@ -73,13 +81,12 @@ class StudentsSearch extends React.Component {
         } 
         
         if (this.state.gender) {
-        result = student.gender === this.state.gender;
+            result = student.gender === this.state.gender;
         };
         
         if (this.state.grade) {
-        result = student.grade === this.state.grade;
+            result = student.grade === this.state.grade;
         };
-
         return result;
 
     };
@@ -87,26 +94,38 @@ class StudentsSearch extends React.Component {
 
     render () {
 
-        let filteredStudents = this.props.students.filter( (student) => {
-            return this.studentFilters(student);
-        });
-
-        let filteredUsers = filteredStudents.filter ( student => {
-           
-            return  [this.props.users[student.parent1Id], this.props.users[student.parent2Id]];
-        });
-
+        let filteredStudents =[];
+        let filteredUsers = [];
+        //nonte: need to restructure the students reducer at some point
+        if (this.props.students.students[0]) {
+            filteredStudents = this.props.students.students.filter( (student) => {
+                return this.studentFilters(student);
+            })
+    
+            // filteredUsers = filteredStudents.filter ( student => {
+            //     return  [this.props.users[student.parent1Id], this.props.users[student.parent2Id]];
+            // });
+        }
+        
         return ( 
             
             <div className='studentSelect'>
-            <div className='studentFilter'>
+            <div className='studentFilter'>Student Name Filter
                 <input type="text" value={`${this.state.query.text}`} onChange={this.filterUpdate('text')} /> 
             </div>
 
             <div className='studentChecks'>
-                <input type="checkbox" name='allergies' onChange={this.handleFilterCheck('disabilities')}/>
-                <input type="checkbox" name='disabilities' onChange={this.handleFilterCheck('disabilities')}/>
-                <input type="checkbox" name='medicalConditions' onChange={this.handleFilterCheck('disabilities')}/>
+                <label>Include Allergies Search?
+                    <input type="checkbox" name='allergies' onChange={this.handleFilterCheck('allergies')}/>
+                </label>
+
+                <label>Include Disabilities Search?
+                    <input type="checkbox" name='disabilities' onChange={this.handleFilterCheck('disabilities')}/>
+                </label>
+
+                <label>Include Medical Conditions Search?
+                    <input type="checkbox" name='medicalConditions' onChange={this.handleFilterCheck('medicalConditions')}/>
+                </label>
             </div>
 
             <div className='studentoptions'>
@@ -115,17 +134,20 @@ class StudentsSearch extends React.Component {
                     <option value="Female">Female</option>
                     <option value="other">Other</option>
                 </select>
-                <input type="text" value={`${this.state.query.text}`} onChange={this.filterUpdate('grade')}></input>
+                <label>Grade
+                    <input type="text" value={`${this.state.query.grade}`} onChange={this.filterUpdate('grade')}></input>
+                </label>
             </div>
 
             <div className='studentIndex'>
                 <ul>
-                { filteredStudents.map ( student =>
+                { filteredStudents.map ( student => (
                     <StudentItem 
                     student={student} 
                     handleStudentCheck={this.handleStudentCheck}
-                    key={student.id}
-                    />
+                    key={student._id}
+                    // key={student._id}
+                    />)
                     )
                 }
                 </ul>
