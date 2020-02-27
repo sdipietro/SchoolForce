@@ -8,7 +8,8 @@ class LoginForm extends React.Component {
     this.state = {
       email: "",
       password: "",
-      demo: false,
+      demoParent: false,
+      demoAdmin: false,
       errors: {}
     };
 
@@ -20,12 +21,11 @@ class LoginForm extends React.Component {
     if (nextProps.signedIn === true) {
       this.props.history.push("/reminders");
     }
-    
+
     this.setState({ errors: nextProps.errors });
   }
 
   componentWillUnmount() {
-
     this.props.clearErrors();
   }
 
@@ -39,20 +39,31 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = Object.assign({}, this.state);
-    let demo = {
-      email: "demo@fake.org",
+    let demoAdmin = {
+      email: "demoAdmin@fake.org",
       password: "password"
-    }
+    };
 
-    if (this.state.demo === true) {
-      return this.props.login(demo)
+    let demoParent = {
+      email: "demoparent@gmail.com",
+      password: "12345678"
+    };
+
+    if (this.state.demoAdmin === true) {
+      return this.props.login(demoAdmin);
+    } else if (this.state.demoParent === true) {
+      return this.props.login(demoParent);
     } else {
-      return this.props.login(user)
+      return this.props.login(user);
     }
   }
 
-  demoLogin() {
-    this.setState({ demo: true });
+  demoParentLogin() {
+    this.setState({ demoParent: true });
+  }
+
+  demoAdminLogin() {
+    this.setState({ demoAdmin: true });
   }
 
   renderErrors() {
@@ -76,7 +87,18 @@ class LoginForm extends React.Component {
                 <a href="#/signup">Sign Up</a>
                 <a href="#/login">Log in</a>
               </div>
-              <button className="demo-login-button" onClick={() => this.demoLogin()}>Demo Login</button>
+              <button
+                className="demo-login-button"
+                onClick={() => this.demoAdminLogin()}
+              >
+                Demo Login as Admin
+              </button>
+              <button
+                className="demo-login-button"
+                onClick={() => this.demoParentLogin()}
+              >
+                Demo Login as Parent
+              </button>
               <label>
                 <input
                   type="text"
@@ -95,8 +117,10 @@ class LoginForm extends React.Component {
                   className="login-input"
                 />
               </label>
-              <div className="session-error-messages">{this.renderErrors()}</div>
-              <input type="submit" value="Log in" className="session-submit"/>
+              <div className="session-error-messages">
+                {this.renderErrors()}
+              </div>
+              <input type="submit" value="Log in" className="session-submit" />
             </div>
           </form>
         </div>
