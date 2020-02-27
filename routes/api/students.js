@@ -34,7 +34,7 @@ router.get('/students/:id', (req, res) => {
         );
 });
 
-router.post('/students',
+router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         console.log(req);

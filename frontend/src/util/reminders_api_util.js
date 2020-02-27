@@ -8,7 +8,7 @@ export const getAllReminders = () => {
   return axios.get("/api/reminders");
 };
 
-export const creatReminder = data => {
+export const createReminder = data => {
   return axios.post("/api/reminders", data);
 };
 

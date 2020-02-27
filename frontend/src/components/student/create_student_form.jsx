@@ -10,12 +10,12 @@ class CreateStudentForm extends React.Component {
       lastName: "",
       parentId: [this.props.currentUser.id],
       allergies: [],
-      specialNeeds: ["wheelchair"],
-      medicalConditions: ["epilepsy"],
-      gender: "male",
-      dateOfBirth: new Date(),
-      startDate: new Date(),
-      grade: "5",
+      specialNeeds: [],
+      medicalConditions: [],
+      gender: "",
+      dateOfBirth: "",
+      startDate: "",
+      grade: "",
       errors: {}
     };
 
@@ -28,19 +28,26 @@ class CreateStudentForm extends React.Component {
   }
 
   update(field) {
-    return e =>
-      this.setState({
-        [field]: e.currentTarget.value
-      });
+    if (Array.isArray(this.state[field])) {
+      return e =>
+        this.setState({
+          [field]: [].concat([e.currentTarget.value])
+        });
+    } else {
+      return e =>
+        this.setState({
+          [field]: e.currentTarget.value
+        });
+    }
   }
 
-  addData(field) {
-    debugger
-    return e =>
-      this.setState({
-        [field]: this.state.field << e.currentTarget.value
-      });
-  }
+  // addData(field) {
+  //   debugger
+  //   return e =>
+  //     this.setState({
+  //       [field]: this.state[field] << e.currentTarget.value
+  //     });
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -88,8 +95,62 @@ class CreateStudentForm extends React.Component {
                 <input
                   type="text"
                   value={this.state.allergies}
-                  onChange={this.addData("allergies")}
+                  onChange={this.update("allergies")}
                   placeholder="Allergies"
+                  className="student-form-input"
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  value={this.state.specialNeeds}
+                  onChange={this.update("specialNeeds")}
+                  placeholder="Special Needs"
+                  className="student-form-input"
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  value={this.state.medicalConditions}
+                  onChange={this.update("medicalConditions")}
+                  placeholder="Medical Conditions"
+                  className="student-form-input"
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  value={this.state.gender}
+                  onChange={this.update("gender")}
+                  placeholder="Gender"
+                  className="student-form-input"
+                />
+              </label>
+              <label>
+                <input
+                  type="date"
+                  value={this.state.dateOfBirth}
+                  onChange={this.update("dateOfBirth")}
+                  placeholder="Date of Birth"
+                  className="student-form-input"
+                />
+              </label>
+              <label>
+                <input
+                  type="date"
+                  value={this.state.startDate}
+                  onChange={this.update("startDate")}
+                  placeholder="Start Date"
+                  className="student-form-input"
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  value={this.state.grade}
+                  onChange={this.update("grade")}
+                  placeholder="Grade"
                   className="student-form-input"
                 />
               </label>
