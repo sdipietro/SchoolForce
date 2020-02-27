@@ -29,6 +29,7 @@ export const fetchAllStudents = () => dispatch => (
 
 
 export const createNewStudent = data => (dispatch) => {
+  debugger
   return APIUtil.createStudent(data)
     .then(student => dispatch(receiveStudent(student)))
 

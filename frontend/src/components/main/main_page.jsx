@@ -3,6 +3,7 @@ import "./main_page.css";
 
 import StudentSearchContainer from '../search/students_search_container';
 import NotLoggedInMain from './not_logged_in_main';
+import ReminderIndexContainer from '../reminder/reminder_index';
 
 class MainPage extends React.Component {
 
@@ -22,8 +23,7 @@ class MainPage extends React.Component {
       } else if (this.props.currentUser.adminStatus === false) {
         return (
           <div id="main-page">
-            <h1>Welcome Parent!</h1>
-            <div>Reminder Index Component</div>
+            <ReminderIndexContainer />
           </div>
         );
       }
