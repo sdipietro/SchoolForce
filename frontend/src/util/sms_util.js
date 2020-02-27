@@ -2,47 +2,46 @@
 // Your Account Sid and Auth Token from twilio.com/console
 
 // DANGER! This is insecure. See http://twil.io/secure
+const config = require('../../../config/keys')
+const client = require('twilio')(config.accountSid, config.authToken);
 
-const accountSid = require('../../../config/keys').accountSid;
-const authToken = require('../../../config/keys').authToken;
-const client = require('twilio')(accountSid, authToken);
 
 // if you just run `node sms_util.js` in the terminal the message below is created and sent:
-client.messages
-    .create({
-        body: 'TESTING Twilio API from Jesse, if you received this slack me! - Schoolforce remninder to bring your own food to the school dinner',
-        from: '+14156530533', //this is the Schoolforce Twilio trial number
-        to: '+19175793267' //this is Jesse's number
+
+
+//----------------- sending BULK sms
+
+var arrayOfNumbers = ["+19175793267", "+19144139483", "+16506199857", "+13473624151"] 
+
+arrayOfNumbers.forEach((number, reminder) => {
+    client.messages
+        .create({
+            body: reminder.body,
+            from: config.twilioNumber,
+            to: number
     })
-
-// export const sendSMSOneRecipient = (senderNumber, recipientNumber, reminder) => {
-//     client.messages 
-//         .create ({
-//             body: reminder.body, 
-//             from: `+1 + ${senderNumber}`,
-//             to: `+1 + ${recipientNumber}`
-//         })
-// };
-
-// let recipientsArr = ["9144139483", "6506199857"];
-
-// // there may be a more efficient way to do this using Twilio API somehow:
-// // THIS ISNT DOING ANYTHING YET BUT DOES NOT GENERATE ERROR
-// const sendSMSManyRecipient = (senderNumber, recipientsArr, reminder) => {
-//     for (let i = 0; i < recipientsArr.length; i++) {
-//         client.messages
-//             .create ({
-//                 body: reminder.body,
-//                 from: `+1 + ${senderNumber}`,
-//                 to: `+1 + ${recipientsArr[i]}`
-//             })
-//     }
-// }
-
-// //THIS IS NOT GENERATING ANYTHING YET
-// sendSMSManyRecipient("4156530533", recipientsArr, {body: "if you received this, multi-recipient SMS works"});
+    .then(message =>  console.log(message.status))
+});
 
 
-// // IMPROVEMENT:
-// // receiving SMS responses guide:
-// // https://www.twilio.com/docs/sms/quickstart/node?code-sample=code-send-an-sms-using-twilio-with-nodejs&code-language=Node.js&code-sdk-version=3.x#where-to-next
+//----------------- sending VERIFICATION sms
+
+arrayOfNumbers.forEach(numbers => (
+    client.verify.services(config.verifySid).verifications
+        .create({ 
+            to: numbers, 
+            channel: 'sms' 
+    })
+    .then(verification => console.log(verification.sid))
+));
+
+
+//----------------- receiving VERIFICATION sms
+
+client.verify.services(config.verifySid).verificationChecks
+    .create({ 
+        to: numbers, 
+        code: `${verificationNumber}` })
+    .then(verification_check => console.log(verification_check.status));
+
+
