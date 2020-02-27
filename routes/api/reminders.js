@@ -23,6 +23,7 @@ router.get("/test", (req, res) => res.json({ msg: "This is the reminders route" 
 //         );
 // });
 
+
 // router.post('/new',
 //     // passport.authenticate('jwt', { session: false }),
 //     (req, res) => {

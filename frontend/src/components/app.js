@@ -5,7 +5,9 @@ import NavBarContainer from "./nav/navbar_container";
 import MainPageContainer from "./main/main_page_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
+import CreateStudentFormContainer from "./student/create_student_form_container";
 import ReminderForm from "./search/reminder_form";
+
 
 const App = () => (
   <div id="appContainer">
@@ -14,6 +16,7 @@ const App = () => (
       <Route exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <Route exact path="/student/new" component={CreateStudentFormContainer} />
       <Route exact path="/draftReminder" component={ReminderForm} />
     </Switch>
 

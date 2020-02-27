@@ -6,10 +6,10 @@ module.exports = function validateStudentInput(data) {
 
     data.firstName = validText(data.firstName) ? data.firstName : '';
     data.lastName = validText(data.lastName) ? data.lastName : '';
-    // data.gender = validText(data.gender) ? data.gender : '';
-    // data.dateOfBirth = validText(data.dateOfBirth) ? data.dateOfBirth : '';
-    // data.startDate = validText(data.startDate) ? data.startDate : '';
-    // data.grade = validText(data.grade) ? data.grade : '';
+    data.gender = validText(data.gender) ? data.gender : '';
+    data.dateOfBirth = validText(data.dateOfBirth) ? data.dateOfBirth : '';
+    data.startDate = validText(data.startDate) ? data.startDate : '';
+    data.grade = validText(data.grade) ? data.grade : '';
 
 
     if (Validator.isEmpty(data.firstName)) {
@@ -36,21 +36,21 @@ module.exports = function validateStudentInput(data) {
         errors.lastName = 'Last name must be a maximum of 15 characters';
     }
 
-    // if (Validator.isEmpty(data.gender)) {
-    //     errors.gender = 'Gender is required';
-    // }
+    if (Validator.isEmpty(data.gender)) {
+        errors.gender = 'Gender is required';
+    }
 
-    // if (Validator.isEmpty(data.dateOfBirth)) {
-    //     errors.dateOfBirth = 'Date of birth is required';
-    // }
+    if (Validator.isEmpty(data.dateOfBirth)) {
+        errors.dateOfBirth = 'Date of birth is required';
+    }
 
-    // if (Validator.isEmpty(data.startDate)) {
-    //     errors.startDate = 'Start date is required';
-    // }
+    if (Validator.isEmpty(data.startDate)) {
+        errors.startDate = 'Start date is required';
+    }
 
-    // if (Validator.isEmpty(data.grade)) {
-    //     errors.grade = 'Grade is required';
-    // }
+    if (Validator.isEmpty(data.grade)) {
+        errors.grade = 'Grade is required';
+    }
 
     return {
         errors,
