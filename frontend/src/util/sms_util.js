@@ -5,7 +5,6 @@
 const config = require('../../../config/keys')
 const client = require('twilio')(config.accountSid, config.authToken);
 
-
 // if you just run `node sms_util.js` in the terminal the message below is created and sent:
 
 
@@ -13,16 +12,7 @@ const client = require('twilio')(config.accountSid, config.authToken);
 
 var arrayOfNumbers = ["+19175793267", "+19144139483", "+16506199857", "+13473624151"] 
 
-arrayOfNumbers.forEach((number, reminder) => {
-    client.messages
-        .create({
-            body: reminder.body,
-            from: config.twilioNumber,
-            to: number
-    })
-    .then(message =>  console.log(message.status))
-});
-
+npm 
 
 //----------------- sending VERIFICATION sms
 
@@ -43,5 +33,4 @@ client.verify.services(config.verifySid).verificationChecks
         to: numbers, 
         code: `${verificationNumber}` })
     .then(verification_check => console.log(verification_check.status));
-
 

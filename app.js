@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const users = require("./routes/api/users");
 const students = require("./routes/api/students");
 const reminders = require("./routes/api/reminders");
+const passport = require('passport')
 
 //this is for heroku deploy: https://open.appacademy.io/learn/swe-in-person-nyc/mern-stack-curriculum/deploying-your-app
 
@@ -27,7 +28,9 @@ mongoose
 // basic route to render info on our page
 app.get("/", (req, res) => res.send("SchoolForce is in session"));
 
-app.use(config.passport.initialize());
+app.use(passport.initialize());
+require('./config/passport')(passport);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
  
