@@ -1,17 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
-const keys = require('../../config/keys');
+const config = require('./config/keys')
+const client = require('twilio')(config.accountSid, config.authToken);
+
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
-router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.get('/current', config.passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
       id: req.user.id,
       handle: req.user.handle,
@@ -55,14 +56,14 @@ router.post('/register', (req, res) => {
                     .then(user => {
                         const payload = { id: user.id, handle: user.email };
                         //key will expire in an hour
-                        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+                        jwt.sign(payload, config.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                             res.json({
                               success: true,
                               token: "Bearer " + token
                             });
                           });
                         })
-                    .catch(err => console.log(err));
+                    .catch(err => console.log(err))
                 })
             })
         }
@@ -97,7 +98,7 @@ router.post('/login', (req, res) => {
 
             jwt.sign(
                 payload,
-                keys.secretOrKey,
+                config.secretOrKey,
                 // the key will expire in one hour
                 {expiresIn: 3600},
                 (err, token) => {

@@ -9,6 +9,9 @@ export const getAllStudents = () => {
 };
 
 export const createStudent = data => {
-  
   return axios.post("/api/students", data);
+};
+
+export const deleteStudent = id => {
+  return axios.get(`/api/students/${id}`);
 };

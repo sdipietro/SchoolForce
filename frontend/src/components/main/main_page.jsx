@@ -1,16 +1,9 @@
 import React from "react";
 import "./main_page.css";
-import { Link } from "react-router-dom";
 
 const MainPage = ({ currentUser, logout }) => {
-
-
-    // debugger
-    // if (currentUser) {
       return (
         <div id="main-page">
-     
-
           <section className="main-page-body">
             <h2 className="main-page-body-main-hook">
               You're a school director and parents never read your emails?

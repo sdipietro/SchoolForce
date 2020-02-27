@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
   }
 
   componentWillUnmount() {
-
+    debugger
     this.props.clearErrors();
   }
 
