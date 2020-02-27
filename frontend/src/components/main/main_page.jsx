@@ -1,10 +1,14 @@
 import React from "react";
 import "./main_page.css";
-// import { Link } from "react-router-dom";
-import StudentSearchContainer from "../search/students_search_container";
-import NotLoggedInMain from "./not_logged_in_main";
+
+import StudentSearchContainer from '../search/students_search_container';
+import NotLoggedInMain from './not_logged_in_main';
 
 
+class MainPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
 class MainPage extends React.Component {
 
@@ -12,7 +16,9 @@ class MainPage extends React.Component {
       // debugger
       if ((this.props.currentUser === undefined) || (Object.keys(this.props.currentUser).length === 0)) {
         return (
-          <NotLoggedInMain />
+           <div id="main-page">
+              <NotLoggedInMain />
+           </div>
           // <div id="main-page">
           //   <section className="main-page-body">
           //     <h2 className="main-page-body-main-hook">
@@ -65,11 +71,13 @@ class MainPage extends React.Component {
         );
       } else if (this.props.currentUser.adminStatus === true) {
         return (
-          <StudentSearchContainer />
+          <div id="main-page">
+            <StudentSearchContainer />
+           </div >
         );
       } else if (this.props.currentUser.adminStatus === false) {
         return (
-          <div>
+          <div id="main-page">
             <h1>Welcome Parent!</h1>
             <div>Reminder Index Component</div>
           </div>
@@ -77,5 +85,6 @@ class MainPage extends React.Component {
       }
   }
 }
+
 
 export default MainPage;

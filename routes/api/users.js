@@ -14,8 +14,8 @@ router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
       id: req.user.id,
-      handle: req.user.handle,
-      email: req.user.email
+      email: req.user.email,
+      admin: req.user.admin
     });
   })
 
@@ -62,6 +62,7 @@ router.post('/register', (req, res) => {
                           schoolId: user.schoolId,
                           adminStatus: user.admin
                         };
+
                         //key will expire in an hour
                         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                             res.json({
