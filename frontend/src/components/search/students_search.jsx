@@ -99,7 +99,6 @@ class StudentsSearch extends React.Component {
         let filteredStudents =[];
         let filteredUsers = [];
         //nonte: need to restructure the students reducer at some point
-        debugger
         if (this.props.students.students[0]) {
             filteredStudents = this.props.students.students.filter( (student) => {
                 return this.studentFilters(student);

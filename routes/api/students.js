@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const config = require('../../config/keys');
+const passport = require('passport')
 
 const Student = require('../../models/Student');
 const validateStudentInput = require('../../validation/students');
@@ -35,7 +35,7 @@ router.get('/students/:id', (req, res) => {
 });
 
 router.post('/students',
-    config.passport.authenticate('jwt', { session: false }),
+    passport.authenticate('jwt', { session: false }),
     (req, res) => {
         console.log(req);
 

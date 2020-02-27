@@ -3,8 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
-const config = require('./config/keys')
-const client = require('twilio')(config.accountSid, config.authToken);
+const config = require('../../config/keys')
+const passport = require('passport')
+// const client = require('twilio')(config.accountSid, config.authToken);
 
 
 const validateRegisterInput = require('../../validation/register');
@@ -12,7 +13,7 @@ const validateLoginInput = require('../../validation/login');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
-router.get('/current', config.passport.authenticate('jwt', {session: false}), (req, res) => {
+router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
       id: req.user.id,
       email: req.user.email,
