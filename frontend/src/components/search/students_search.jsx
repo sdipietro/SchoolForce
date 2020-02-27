@@ -1,5 +1,6 @@
 import React from 'react'
-import StudentIndex from './student_index'
+import StudentItem from './student_item'
+import {Link} from 'react-router-dom'
 
 
 class StudentsSearch extends React.Component {
@@ -91,10 +92,13 @@ class StudentsSearch extends React.Component {
         });
 
         let filteredUsers = filteredStudents.filter ( student => {
-            return this.props.users[student.userId]
+           
+            return  [this.props.users[student.parent1Id], this.props.users[student.parent2Id]];
         });
 
-        <div className='studentSelect'>
+        return ( 
+            
+            <div className='studentSelect'>
             <div className='studentFilter'>
                 <input type="text" value={`${this.state.query.text}`} onChange={this.filterUpdate('text')} /> 
             </div>
@@ -115,10 +119,18 @@ class StudentsSearch extends React.Component {
             </div>
 
             <div className='studentIndex'>
-                <StudentIndex filteredStudents={filteredStudents} handleStudentCheck={this.handleStudentCheck}/>
+                <ul>
+                { filteredStudents.map ( student =>
+                    <StudentItem 
+                    student={student} 
+                    handleStudentCheck={this.handleStudentCheck}
+                    key={student.id}
+                    />
+                    )
+                }
+                </ul>
             </div>
-            
-
+            <Link to={`/reminders`} users={filteredUsers} />
         </div>
         )
     }
