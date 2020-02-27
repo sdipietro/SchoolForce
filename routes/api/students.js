@@ -8,7 +8,7 @@ const validateStudentInput = require('../../validation/students');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the students route" }));
 
-router.get('/students', (req, res) => {
+router.get('/', (req, res) => {
     Student.find()
         .then(students => res.json(students))
         .catch(err => 
@@ -17,7 +17,7 @@ router.get('/students', (req, res) => {
         );
 });
 
-router.get('/students/:parentId', (req, res) => {
+router.get('/:parentId', (req, res) => {
     Student.find({ student: req.params.parentId })
         .then(students => res.json(students))
         .catch(err =>
@@ -26,7 +26,7 @@ router.get('/students/:parentId', (req, res) => {
         );
 });
 
-router.get('/students/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     Student.findById(req.params.id)
         .then(student => res.json(student))
         .catch(err =>
@@ -34,7 +34,7 @@ router.get('/students/:id', (req, res) => {
         );
 });
 
-router.post('/students',
+router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         console.log(req);
