@@ -2,7 +2,6 @@ import React from "react";
 import "./main_page.css";
 import { Link } from "react-router-dom";
 
-
 const MainPage = ({ currentUser, logout }) => {
 
 
@@ -10,22 +9,7 @@ const MainPage = ({ currentUser, logout }) => {
     // if (currentUser) {
       return (
         <div id="main-page">
-          <header className="login-page-header">
-            <div className="login-page-header-left">
-              <Link to="/">
-                <h1 className="header-logo">SchoolForce</h1>
-              </Link>
-            </div>
-            <div className="main-page-links">
-              <Link className="login-button" to="/login">
-                Login
-              </Link>
-              <Link className="signup-button" to="/signup">
-                Signup
-              </Link>
-            </div>
-
-          </header>
+     
 
           <section className="main-page-body">
             <h2 className="main-page-body-main-hook">
