@@ -8,7 +8,6 @@ export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 
 export const receiveCurrentUser = currentUser => {
-  // debugger
   return {
   type: RECEIVE_CURRENT_USER,
   currentUser
@@ -41,7 +40,6 @@ export const signup = user => dispatch => (
 );
 
 export const login = user => dispatch => {
-  // debugger
   APIUtil.login(user).then(res => {
     const { token } = res.data;
     localStorage.setItem('jwtToken', token);

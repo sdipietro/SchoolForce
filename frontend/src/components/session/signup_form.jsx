@@ -70,10 +70,6 @@ class SignupForm extends React.Component {
   }
 
   renderErrors() {
-<<<<<<< HEAD
-=======
-
->>>>>>> a7333f436f875caa56b881d4087f681f160288cc
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (

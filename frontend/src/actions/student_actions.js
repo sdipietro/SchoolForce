@@ -16,7 +16,6 @@ export const receiveAllStudents = students => ({
 });
 
 // export const receiveNewStudent = student => {
-//   debugger
 //   return {
 //   type: RECEIVE_NEW_STUDENT,
 //   student

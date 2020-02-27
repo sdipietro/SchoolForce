@@ -6,10 +6,6 @@ import { fetchAllReminders } from "../../actions/reminder_actions";
 import MainPage from './main_page.jsx';
 
 const mapStateToProps = (state) => {
-<<<<<<< HEAD
-=======
-
->>>>>>> a7333f436f875caa56b881d4087f681f160288cc
     return {
         currentUser: state.session.user
     };
