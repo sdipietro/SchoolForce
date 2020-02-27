@@ -40,7 +40,7 @@ router.post('/register', (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             mobile: req.body.mobile,
-            // schoolId: req.body.schoolId,
+            schoolId: req.body.schoolId,
             email: req.body.email,
             password: req.body.password,
             admin: false
@@ -53,7 +53,16 @@ router.post('/register', (req, res) => {
                 newUser.password = hash;
                 newUser.save()
                     .then(user => {
-                        const payload = { id: user.id, email: user.email, admin: user.admin };
+                        const payload = {
+                          id: user.id,
+                          firstName: user.firstName,
+                          lastName: user.lastName,
+                          email: user.email,
+                          mobile: user.mobile,
+                          schoolId: user.schoolId,
+                          adminStatus: user.admin
+                        };
+
                         //key will expire in an hour
                         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                             res.json({
@@ -93,7 +102,15 @@ router.post('/login', (req, res) => {
     bcrypt.compare(password, user.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: user.id, name: user.email};
+            const payload = {
+              id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email,
+              mobile: user.mobile,
+              schoolId: user.schoolId,
+              adminStatus: user.admin
+            };
 
             jwt.sign(
                 payload,
