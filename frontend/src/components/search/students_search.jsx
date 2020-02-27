@@ -19,8 +19,10 @@ class StudentsSearch extends React.Component {
         }
         this.students = this.props.students;
         this.fetchStudents = this.props.fetchStudents;
+        this.selectedStudents = this.state.selectedStudents;
         this.query = this.props.query;
         this.filterUpdate = this.filterUpdate.bind(this);
+        this.handleStudentCheck = this.handleStudentCheck.bind(this);
     }
 
    filterUpdate (field) {
@@ -30,10 +32,22 @@ class StudentsSearch extends React.Component {
         }
     };
 
-    handleCheck (field) {
+    handleFilterCheck (field) {
         return () => {
         let newState = Object.assign({}, this.state.query, {[field]: !this.state.field});
         this.setState(newState);
+        }
+    }
+
+    handleStudentCheck (student) {
+       
+        if (this.selectedStudents[student.id]) {
+            let newState = delete this.selectedStudents;
+            newState = Object.assign({}, this.selectedStudents, newState);
+            this.setState(newState);
+        } else {
+            let newState = Object.assign({}, this.selectedStudents, {[student.id]: student});
+            this.setState(newState);
         }
     }
 
@@ -74,10 +88,11 @@ class StudentsSearch extends React.Component {
 
         let filteredStudents = this.props.students.filter( (student) => {
             return this.studentFilters(student);
-        })
+        });
 
-        
-        return (
+        let filteredUsers = filteredStudents.filter ( student => {
+            return this.props.users[student.userId]
+        });
 
         <div className='studentSelect'>
             <div className='studentFilter'>
@@ -85,9 +100,9 @@ class StudentsSearch extends React.Component {
             </div>
 
             <div className='studentChecks'>
-                <input type="checkbox" name='allergies' onChange={this.handleCheck('disabilities')}/>
-                <input type="checkbox" name='disabilities' onChange={this.handleCheck('disabilities')}/>
-                <input type="checkbox" name='medicalConditions' onChange={this.handleCheck('disabilities')}/>
+                <input type="checkbox" name='allergies' onChange={this.handleFilterCheck('disabilities')}/>
+                <input type="checkbox" name='disabilities' onChange={this.handleFilterCheck('disabilities')}/>
+                <input type="checkbox" name='medicalConditions' onChange={this.handleFilterCheck('disabilities')}/>
             </div>
 
             <div className='studentoptions'>
@@ -100,7 +115,7 @@ class StudentsSearch extends React.Component {
             </div>
 
             <div className='studentIndex'>
-                <StudentIndex filteredStudents={filteredStudents} />
+                <StudentIndex filteredStudents={filteredStudents} handleStudentCheck={this.handleStudentCheck}/>
             </div>
             
 

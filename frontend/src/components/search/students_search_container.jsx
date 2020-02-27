@@ -4,10 +4,11 @@ import fetchStudents from '';
 import {withRouter} from 'react-router-dom';
 
 
-const mapStateToProps = ({entities: {students}}) => 
+const mapStateToProps = ({entities: {students}}, {entities: {users}}) => 
     (
     {
-        students: Object.values(students)
+        students: Object.values(students),
+        users: users
     }
 )
 
