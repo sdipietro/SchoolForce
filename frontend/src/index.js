@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.logout = () => store.dispatch(logout());
 
   window.createNewStudent = data => store.dispatch(createNewStudent(data));
-
-
+  
   ReactDOM.render(<Root store={store} />, root);
 });
+

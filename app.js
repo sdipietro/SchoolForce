@@ -1,15 +1,13 @@
 
 const express = require("express");
 const app = express();
-const db = require('./config/keys').mongoURI;
+const config = require('./config/keys')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const users = require("./routes/api/users");
 const students = require("./routes/api/students");
 const reminders = require("./routes/api/reminders");
-
-const passport = require('passport');
+const passport = require('passport')
 
 //this is for heroku deploy: https://open.appacademy.io/learn/swe-in-person-nyc/mern-stack-curriculum/deploying-your-app
 
@@ -22,12 +20,8 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-//heroku deploy script END
-
-// , useUnifiedTopology: true
-
 mongoose
-    .connect(db, { useNewUrlParser: true })
+    .connect(config.mongoURI, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 
@@ -39,8 +33,10 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+ 
 app.use("/api/users", users);
 app.use("/api/students", students);
+app.use("/api/reminders", reminders);
 
 
 //tell Express to start a socket and listen for connections on the path.

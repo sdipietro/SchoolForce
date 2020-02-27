@@ -1,9 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
-const passport = require('passport');
-
 const Reminder = require('../../models/Reminder');
+const config = require('../../config/keys')
+const passport = require('passport')
+// const client = require('twilio')(config.accountSid, config.authToken);
+
 const validateReminderInput = require('../../validation/reminders');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the reminders route" }));
@@ -14,26 +15,18 @@ router.get('/', (req, res) => {
         .catch(err => res.status(404).json({ noRemindersFound: 'No reminders found' }));
 });
 
-router.get('/user/:userId', (req, res) => {
-    Reminder.find({ admin: req.params.userId })
-        .then(reminders => res.json(reminders))
-        .catch(err =>
-            res.status(404).json({ noRemindersFound: 'No reminders found from that admin' }
-            )
-        );
-});
-
 router.get('/:title', (req, res) => {
-    Reminder.findById(req.params.id)
+    Reminder.findById(req.params.title)
         .then(reminder => res.json(reminder))
         .catch(err =>
             res.status(404).json({ noRemindersFound: 'No reminder found with that title' })
         );
 });
 
-router.post('/',
+router.post('/new',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
+        debugger
         const { errors, isValid } = validateReminderInput(req.body);
 
         if (!isValid) {
@@ -43,12 +36,32 @@ router.post('/',
         const newReminder = new Reminder({
             title: req.body.text,
             body: req.body.body,
-            recipientId: [req.body.recipientId],
+            parentId: [req.body.parentId],
             authorId: req.user.id,
             createdDate: req.body.createdDate
         });
 
         newReminder.save().then(reminder => res.json(reminder));
+//             // .then(() => 
+//             // arrayOfNumbers.forEach((number, reminder) => {
+//             //         client.messages
+//             //         .create({
+//             //             body: reminder.body,
+//             //             from: config.twilioNumber,
+//             //             to: number
+//             //         })
+//             //         .then(() => {
+//             //             res.status(200).send('Reminder was successfully sent');
+//             //         })
+//             //         .catch((err) => {
+//             //             console.error(err);
+//             //             response.status(500).send();
+//             //         })
+//             // })
+// });
+
+
+
     }
 );
 

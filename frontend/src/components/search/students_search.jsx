@@ -93,6 +93,7 @@ class StudentsSearch extends React.Component {
         let filteredParentsArr = [];
         if (this.props.students[0]) {
             filteredStudents = this.props.students.filter( (student) => {
+
                 return this.studentFilters(student);
             })
     
