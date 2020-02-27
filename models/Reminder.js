@@ -10,7 +10,7 @@ const ReminderSchema = new Schema({
         type: String,
         required: true
     },
-    recipientId: {
+    parentId: {
         type: [Schema.Types.ObjectId],
         ref: 'users',
         required: true
