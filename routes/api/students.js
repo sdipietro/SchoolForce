@@ -8,6 +8,7 @@ const validateStudentInput = require('../../validation/students');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the students route" }));
 
+//students.js
 router.get('/', (req, res) => {
     Student.find()
         .then(students => res.json(students))

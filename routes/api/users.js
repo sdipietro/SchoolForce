@@ -11,6 +11,16 @@ const validateLoginInput = require('../../validation/login');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
+router.get('/', (req, res) => {
+  User.find()
+    .then(users => res.json(users))
+    .catch(err =>
+      res.status(404).json({ noUsersFound: 'No users found' }
+      )
+    );
+});
+
+
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
       id: req.user.id,
