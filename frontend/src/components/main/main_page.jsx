@@ -17,7 +17,7 @@ class MainPage extends React.Component {
         return (
           <div id="main-page">
             <StudentSearchContainer />
-           </div >
+           </div>
         );
       } else if (this.props.currentUser.adminStatus === false) {
         return (

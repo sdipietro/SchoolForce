@@ -23,7 +23,7 @@ router.get('/reminders/:title', (req, res) => {
         );
 });
 
-router.post('/:reminders',
+router.post('/reminders',
     config.passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateReminderInput(req.body);

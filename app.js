@@ -30,7 +30,7 @@ app.get("/", (req, res) => res.send("SchoolForce is in session"));
 app.use(config.passport.initialize());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+ 
 app.use("/api/users", users);
 app.use("/api/students", students);
 app.use("/api/reminders", reminders);

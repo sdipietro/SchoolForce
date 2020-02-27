@@ -18,8 +18,7 @@ config.secretOrKey = process.env.SECRET_OR_KEY;
 // you could hard code these values here as strings.
 config.accountSid = process.env.ACCOUNTSID;
 config.authToken = process.env.AUTHTOKEN;
-config.bulkServiceSid = process.env.BULK_SERVICE_SID;
-config.validationServiceSid = process.env.VALIDATION_SERVICE_SID;
+config.verifySid = process.env.VERIFYSID;
 
 // A Twilio number you control - choose one from:
 // https://www.twilio.com/user/account/phone-numbers/incoming
