@@ -11,7 +11,7 @@ class StudentsSearch extends React.Component {
             query: {
                 text: '',
                 allergies: false,
-                disabilities: false,
+                specialNeeds: false,
                 medicalConditions: false,
                 gender: '',
                 grade: ''
@@ -36,7 +36,8 @@ class StudentsSearch extends React.Component {
 
     handleFilterCheck (field) {
         return () => {
-            let newState = Object.assign({}, this.state.query, {[field]: !this.state.field});
+            let newQuery = Object.assign({}, this.state.query, { [field]: !this.state.query[field] });
+            let newState = Object.assign({}, this.state, { query: newQuery })
             this.setState(newState);
         }
     }
@@ -63,37 +64,42 @@ class StudentsSearch extends React.Component {
     }
 
     studentFilters (student) {
-        
-        let result = true;
-        debugger
+        let displayStudent = true;
         if (student) {
-            debugger
-            result = (student.firstName.toLowerCase().indexOf(this.state.query.text) !== -1 || 
+            displayStudent = (student.firstName.toLowerCase().indexOf(this.state.query.text) !== -1 || 
                     student.lastName.toLowerCase().indexOf(this.state.query.text) !== -1);
         }
-                  debugger
-        
 
-        if (this.state.allergies || this.state.disabilities || this.state.medicalConditions) { 
-            result = (Boolean(student.allergies.first) === this.state.allergies || 
-                    Boolean(student.disabilities.first) === this.state.disabilities ||  
-                    Boolean(student.disabilities.first)) === this.state.medicalConditions
-        } 
+        if (this.state.query.allergies || this.state.query.specialNeeds || this.state.query.medicalConditions) {
+            displayStudent = false;
+            if (this.state.query.allergies && Boolean(student.allergies[0])) {
+                displayStudent = true;
+            }
+            if (this.state.query.specialNeeds && Boolean(student.specialNeeds[0])) {
+                displayStudent = true;
+            }
+            if (this.state.query.medicalConditions && Boolean(student.medicalConditions[0])) {
+                displayStudent = true;
+            }
+        }
         
-        if (this.state.gender) {
-            result = student.gender === this.state.gender;
+        debugger
+        if (this.state.query.gender) {
+            debugger
+            displayStudent = student.gender === this.state.query.gender;
+            debugger
         };
         
-        if (this.state.grade) {
-            result = student.grade === this.state.grade;
+        if (this.state.query.grade) {
+            displayStudent = student.grade === this.state.query.grade;
         };
-        return result;
+        return displayStudent;
 
     };
 
 
     render () {
-
+        debugger
         let filteredStudents =[];
         let filteredUsers = [];
         //nonte: need to restructure the students reducer at some point
@@ -119,8 +125,8 @@ class StudentsSearch extends React.Component {
                     <input type="checkbox" name='allergies' onChange={this.handleFilterCheck('allergies')}/>
                 </label>
 
-                <label>Include Disabilities Search?
-                    <input type="checkbox" name='disabilities' onChange={this.handleFilterCheck('disabilities')}/>
+                <label>Include Special Needs Search?
+                    <input type="checkbox" name='specialNeeds' onChange={this.handleFilterCheck('specialNeeds')}/>
                 </label>
 
                 <label>Include Medical Conditions Search?
@@ -130,8 +136,8 @@ class StudentsSearch extends React.Component {
 
             <div className='studentoptions'>
                 <select className='gender' onChange={this.filterUpdate('gender')}>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                     <option value="other">Other</option>
                 </select>
                 <label>Grade
@@ -146,7 +152,6 @@ class StudentsSearch extends React.Component {
                     student={student} 
                     handleStudentCheck={this.handleStudentCheck}
                     key={student._id}
-                    // key={student._id}
                     />)
                     )
                 }
