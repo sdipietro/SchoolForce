@@ -31,7 +31,7 @@ class CreateStudentForm extends React.Component {
     if (Array.isArray(this.state[field])) {
       return e =>
         this.setState({
-          [field]: [].concat([e.currentTarget.value])
+          [field]: e.currentTarget.value
         });
     } else {
       return e =>
@@ -51,7 +51,19 @@ class CreateStudentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let student = Object.assign({}, this.state);
+    let student = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      parentId: this.state.parentId,
+      allergies: this.state.allergies.split(", "),
+      specialNeeds: this.state.specialNeeds.split(", "),
+      medicalConditions: this.state.medicalConditions.split(", "),
+      gender: this.state.gender,
+      dateOfBirth: this.state.dateOfBirth,
+      startDate: this.state.startDate,
+      grade: this.state.grade,
+      errors: this.state.errors
+    };
 
     return this.props.createNewStudent(student);
   }
@@ -127,7 +139,7 @@ class CreateStudentForm extends React.Component {
                   className="student-form-input"
                 />
               </label>
-              <label>
+              <label>Date of Birth
                 <input
                   type="date"
                   value={this.state.dateOfBirth}
@@ -136,7 +148,7 @@ class CreateStudentForm extends React.Component {
                   className="student-form-input"
                 />
               </label>
-              <label>
+              <label>Start Date
                 <input
                   type="date"
                   value={this.state.startDate}
