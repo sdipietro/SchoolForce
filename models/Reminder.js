@@ -15,11 +15,9 @@ const ReminderSchema = new Schema({
         required: true
     },
     authorId: {
-        // type: Number,
         type: Schema.Types.ObjectId,
-        ref: 'users', 
+        ref: 'users',
         required: true
-        // required: true
     },
     createdDate: {
         type: Date,
