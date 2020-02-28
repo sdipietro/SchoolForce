@@ -11,7 +11,7 @@ const ReminderSchema = new Schema({
         required: true
     },
     parentId: {
-        type: String,
+        type: [String],
         required: true
     },
     authorId: {
