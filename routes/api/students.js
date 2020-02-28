@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport')
 
 const Student = require('../../models/Student');
-const validateStudentInput = require('../../validation/students');
+const validateStudentInput = require('../../validation/student');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the students route" }));
 
