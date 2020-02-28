@@ -63,16 +63,16 @@ router.get("/test", (req, res) => res.json({ msg: "This is the reminders route" 
 
 
 router.post('/new', (req, res) => {
-    debugger
+    // debugger
         const newReminder = new Reminder({
-            title: req.body.text,
+            title: req.body.title,
             body: req.body.body,
-            // parentId: [req.body.parentId],
-            // authorId: req.body.id
+            parentId: req.body.parentId,
+            authorId: req.body.authorId
         });
         
         newReminder.save()
-        .then(() => console.log(newReminder));
+            .then(reminder => res.json(reminder));
 });
 
 module.exports = router;
