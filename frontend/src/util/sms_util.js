@@ -10,7 +10,7 @@ const client = require('twilio')(config.accountSid, config.authToken);
 
 //----------------- sending BULK sms
 
-var arrayOfNumbers = ["+19175793267", "+19144139483", "+16506199857", "+13473624151"] 
+// var arrayOfNumbers = ["+19175793267", "+19144139483", "+16506199857", "+13473624151"] 
 
 npm 
 

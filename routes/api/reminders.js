@@ -5,7 +5,7 @@ const config = require('../../config/keys')
 const passport = require('passport')
 const client = require('../../frontend/node_modules/twilio/index')(config.accountSid, config.authToken);
 
-const validateReminderInput = require('../../validation/reminders');
+const validateReminderInput = require('../../validation/reminder');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the reminders route" }));
 
@@ -40,7 +40,8 @@ router.post('/new',
             authorId: req.body.authorId
         });
 
-    let arrayOfNumbers = []
+
+        // var arrayOfNumbers = ["+19175793267", "+19144139483", "+16506199857", "+13473624151"] 
         
         newReminder.save()
             .then(reminder => res.json(reminder))
