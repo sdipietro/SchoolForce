@@ -20,6 +20,7 @@ class StudentsSearch extends React.Component {
         }
         this.filterUpdate = this.filterUpdate.bind(this);
         this.handleStudentCheck = this.handleStudentCheck.bind(this);
+        this.adminUserId = this.props.adminUserId;
     }
 
    filterUpdate (field) {
@@ -106,6 +107,8 @@ class StudentsSearch extends React.Component {
                 return oneStudentParentsArr;
             });
         }
+
+        let userAdminId = this.adminUserId;
         
         return ( 
             <div id='admin-search-container'>
@@ -119,7 +122,8 @@ class StudentsSearch extends React.Component {
                     to={{
                         pathname: "/draftReminder",
                         state: {
-                            users:{ filteredParentsArr }
+                            users:{ filteredParentsArr },
+                            adminId: { userAdminId }
                         }
                     }}>Draft Reminder</Link>
 
