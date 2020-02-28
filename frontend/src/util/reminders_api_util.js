@@ -9,7 +9,6 @@ export const getAllReminders = () => {
 };
 
 export const createReminder = data => {
-
   return axios.post("/api/reminders/new", data);
 
 };

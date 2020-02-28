@@ -9,7 +9,6 @@ export const receiveAllReminders = reminders => ({
 });
 
 export const receiveReminder = reminder => {
-  // debugger
   return {
     type: RECEIVE_REMINDER,
     reminder
@@ -17,7 +16,6 @@ export const receiveReminder = reminder => {
 };
 
 export const createReminder = data => dispatch => {
-  // debugger
   return APIUtil.createReminder(data)
     .then(reminder => dispatch(receiveReminder(reminder)))
     .catch(err => console.log(err));

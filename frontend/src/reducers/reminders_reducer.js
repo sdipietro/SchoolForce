@@ -8,7 +8,7 @@ const RemindersReducer = (state = {}, action) => {
       newState.reminders = action.reminders.data;
       return newState;
     case RECEIVE_REMINDER:
-      newState.reminders = action.reminders.data;
+      newState.reminders = action.reminder.data;
       return newState;
     default:
       return state;

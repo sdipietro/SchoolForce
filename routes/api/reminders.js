@@ -63,7 +63,6 @@ router.get("/test", (req, res) => res.json({ msg: "This is the reminders route" 
 
 
 router.post('/new', (req, res) => {
-    // debugger
         const newReminder = new Reminder({
             title: req.body.title,
             body: req.body.body,
