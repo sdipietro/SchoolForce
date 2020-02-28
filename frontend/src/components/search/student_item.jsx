@@ -1,4 +1,6 @@
 import React from 'react';
+import "./student_search_item.css";
+
 
 const studentItem = props => {
     return (
