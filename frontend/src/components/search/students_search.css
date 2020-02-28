@@ -64,3 +64,20 @@
 #admin-search-container .adminCreateReminderLink:hover {
     background-color: #feb72b;
 }
+
+#admin-search-container .studentsUl {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#admin-search-container .studentIndexTitle {
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+#admin-search-container li {
+    margin: 20px;
+    border: 1px solid gray;
+    padding: 10px;
+}
