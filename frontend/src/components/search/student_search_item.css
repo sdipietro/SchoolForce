@@ -1,0 +1,7 @@
+#admin-search-container li {
+    margin: 20px;
+    border: 1px solid gray;
+    padding: 10px;
+    width: 90%;
+    display: flex;
+}
