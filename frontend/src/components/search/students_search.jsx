@@ -149,7 +149,8 @@ class StudentsSearch extends React.Component {
                 </div>
 
                 <div className='studentIndex'>
-                    <ul>
+                    <h2 className='studentIndexTitle'>Select the students to draft a reminder to their parents</h2>
+                    <ul className="studentsUl">
                     { filteredStudents.map ( student => (
                         <StudentItem 
                         student={student} 
