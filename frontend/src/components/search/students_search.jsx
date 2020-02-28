@@ -58,34 +58,43 @@ class StudentsSearch extends React.Component {
     }
 
     studentFilters (student) {
-        let displayStudent = true;
-        if (student) {
-            displayStudent = (student.firstName.toLowerCase().indexOf(this.state.query.text) !== -1 || 
-                    student.lastName.toLowerCase().indexOf(this.state.query.text) !== -1);
-        }
+        
+        let medicalvar = true;
+        let namevar = true;
+        let gendervar = true;
+        let gradevar = true; 
+
 
         if (this.state.query.allergies || this.state.query.specialNeeds || this.state.query.medicalConditions) {
-            displayStudent = false;
+            medicalvar = false;
             if (this.state.query.allergies && Boolean(student.allergies[0])) {
-                displayStudent = true;
+                medicalvar = true;
             }
             if (this.state.query.specialNeeds && Boolean(student.specialNeeds[0])) {
-                displayStudent = true;
+                medicalvar = true;
             }
             if (this.state.query.medicalConditions && Boolean(student.medicalConditions[0])) {
-                displayStudent = true;
+                medicalvar = true;
             }
         }
         
+
+        if (student) {
+          namevar = (student.firstName.toLowerCase().indexOf(this.state.query.text) !== -1 || 
+                    student.lastName.toLowerCase().indexOf(this.state.query.text) !== -1);
+        }
+        
+        
         if (this.state.query.gender) {
-            displayStudent = student.gender === this.state.query.gender;
+            gendervar = student.gender === this.state.query.gender;
         };
         
         if (this.state.query.grade) {
-            displayStudent = student.grade === this.state.query.grade;
+            gradevar = student.grade === this.state.query.grade;
         };
-        return displayStudent;
 
+       return gradevar && gendervar && namevar && medicalvar;
+        
     };
 
 

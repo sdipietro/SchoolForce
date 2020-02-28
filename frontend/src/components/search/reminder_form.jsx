@@ -1,7 +1,6 @@
 import React from 'react';
 
 class ReminderForm extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -25,15 +24,13 @@ class ReminderForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
         this.props.history.location.state.createReminder.createReminder({title: this.state.title, body: this.state.body, authorId: this.authorId, parentId: this.parentIds});
 
         // TO DO:
         // SMS_util file functions invoked to send texts
 
-
         //redirect to main page
-        // this.props.history.push("/");
+        this.props.history.push("/");
       }
 
 
@@ -46,7 +43,7 @@ class ReminderForm extends React.Component {
     render () {
         return (
             <div className='reminderForm'>
-                <h1>NOTHING HAPPENS YET WHEN YOU SUBMIT THE FORM but it will soon generate a new reeminder and send it via Twilio API</h1>
+                <h3>Currently upon submit a text is sent to Danny, Jesse, Stephen, and Antonio</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>Title
                         <input type="text" className='title' onChange={this.update('title')} />
@@ -58,8 +55,8 @@ class ReminderForm extends React.Component {
                 </form>
 
                 <ul>
-                    {this.parentsArr.map(parent => {
-                        return <li>
+                    {this.parentsArr.map((parent, idx) => {
+                        return <li key={`${idx}`}>
                             <div className="parentName">{parent[0].firstName} {parent[0].lastName}</div>
                             <div className="parentNumber">{"+1" + parent[0].mobile}</div>
                         </li>
