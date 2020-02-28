@@ -63,7 +63,6 @@ class StudentsSearch extends React.Component {
         let namevar = true;
         let gendervar = true;
         let gradevar = true; 
-        let displayStudent = true; 
 
 
         if (this.state.query.allergies || this.state.query.specialNeeds || this.state.query.medicalConditions) {
@@ -94,9 +93,8 @@ class StudentsSearch extends React.Component {
             gradevar = student.grade === this.state.query.grade;
         };
 
-        displayStudent = gradevar && gendervar && namevar && medicalvar;
-        return displayStudent;
-
+       return gradevar && gendervar && namevar && medicalvar;
+        
     };
 
 
