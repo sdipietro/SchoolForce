@@ -11,14 +11,14 @@ const ReminderSchema = new Schema({
         required: true
     },
     parentId: {
-        type: String,
+        type: [String],
         required: true
     },
     authorId: {
-        type: Number,
+        // type: Number,
+        type: Schema.Types.ObjectId,
+        ref: 'users', 
         required: true
-        // type: Schema.Types.ObjectId,
-        // ref: 'users', 
         // required: true
     },
     createdDate: {

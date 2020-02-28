@@ -42,7 +42,6 @@ class CreateStudentForm extends React.Component {
   }
 
   // addData(field) {
-  //   debugger
   //   return e =>
   //     this.setState({
   //       [field]: this.state[field] << e.currentTarget.value

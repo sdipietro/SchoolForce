@@ -1,5 +1,4 @@
 import React from 'react';
-import {createReminder} from '../../actions/reminder_actions';
 
 class ReminderForm extends React.Component {
 
@@ -26,16 +25,15 @@ class ReminderForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        alert("no message is sent, we are setting up Twilio API");
 
-
-        createReminder({title: this.state.title, body: this.state.body, authorId: this.authorId, parentId: this.parentIds});
-
-        //redirect to main page
-        this.props.history.push("/");
+        this.props.history.location.state.createReminder.createReminder({title: this.state.title, body: this.state.body, authorId: this.authorId, parentId: this.parentIds});
 
         // TO DO:
         // SMS_util file functions invoked to send texts
+
+
+        //redirect to main page
+        // this.props.history.push("/");
       }
 
 
@@ -46,7 +44,6 @@ class ReminderForm extends React.Component {
     }
 
     render () {
-        debugger
         return (
             <div className='reminderForm'>
                 <h1>NOTHING HAPPENS YET WHEN YOU SUBMIT THE FORM but it will soon generate a new reeminder and send it via Twilio API</h1>
