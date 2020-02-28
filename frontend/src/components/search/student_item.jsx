@@ -11,8 +11,8 @@ const studentItem = props => {
                 <label class="toggle">
                     {/* <input class="toggle__input" type="checkbox" checked> */}
                     <input className="checkboxStudent toggle__input" checked={Boolean(props.selectedStudents[props.student._id])} type="checkbox" name="student.name" onChange={() => props.handleStudentCheck(props.student)} />
-                        <span class="toggle__label">
-                            <span class="toggle__text"></span>
+                        <span className="toggle__label">
+                            <span className="toggle__text"></span>
                         </span>
                 </label>
 

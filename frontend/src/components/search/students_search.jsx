@@ -109,6 +109,7 @@ class StudentsSearch extends React.Component {
         }
 
         let userAdminId = this.adminUserId;
+        let createReminder = this.props.createReminder;
         
         return ( 
             <div id='admin-search-container'>
@@ -123,7 +124,8 @@ class StudentsSearch extends React.Component {
                         pathname: "/draftReminder",
                         state: {
                             users:{ filteredParentsArr },
-                            adminId: { userAdminId }
+                            adminId: { userAdminId },
+                            createReminder: { createReminder}
                         }
                     }}>Draft Reminder</Link>
 
