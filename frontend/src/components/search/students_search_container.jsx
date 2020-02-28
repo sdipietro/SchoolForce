@@ -8,7 +8,8 @@ import {withRouter} from 'react-router-dom';
 const mapStateToProps = (state) => {
     return {
         students: Object.values(state.entities.students),
-        users: state.entities.users
+        users: state.entities.users,
+        adminUserId: state.session.user.id 
     }
 }
 

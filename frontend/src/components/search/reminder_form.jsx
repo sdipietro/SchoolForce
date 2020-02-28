@@ -10,6 +10,8 @@ class ReminderForm extends React.Component {
         }
         this.parentsArr = this.props.location.state.users.filteredParentsArr;
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.authorId = this.props.history.location.state.adminId.userAdminId;
     }
 
     handleSubmit(e) {
