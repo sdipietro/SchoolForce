@@ -85,20 +85,15 @@ class ReminderForm extends React.Component {
         }
 
         // need to force hacky re-render again in order for new demo parent and number to appear in list at bottom of this component.  Next line sets a part of state to what its value already was (not changing state but forcing re-render)
-        this.setState({ demoParent: [{ firstName: "Current", lastName: "User", mobile: this.state.demoParent[0].mobile }] })
+        this.setState({ demoParent: [{ firstName: "Demo", lastName: "User", mobile: this.state.demoParent[0].mobile }] })
     }   
 
     updateDemoMobile(e) {
         return e => {
-            this.setState({ demoParent: [{ firstName: "Current", lastName: "User", mobile: e.target.value }] })
+            this.setState({ demoParent: [{ firstName: "Demo", lastName: "User", mobile: e.target.value }] })
 
         };
     }
-
-
-
-
- 
 
     render () {
         return (
@@ -134,6 +129,14 @@ class ReminderForm extends React.Component {
                                     }
                                 }
                                 
+                                if (parent[0].firstName === "Demo" && parent[0].lastName === "User") {
+                                    return <li key={`${idx}`} className="demoParent">
+                                        {/* we could make these links to parent show page */}
+                                        <div className="parentName">{parent[0].firstName} {parent[0].lastName}</div>
+                                        <div className="parentNumber">{"+1 " + parent[0].mobile.slice(0, 3) + "-" + parent[0].mobile.slice(3, 6) + "-" + parent[0].mobile.slice(6, 10)}</div>
+                                    </li>
+                                }
+
                                 if (dupe === false) {
                                     return <li key={`${idx}`}>
                                         {/* we could make these links to parent show page */}
@@ -141,6 +144,7 @@ class ReminderForm extends React.Component {
                                         <div className="parentNumber">{"+1 " + parent[0].mobile.slice(0, 3) + "-" + parent[0].mobile.slice(3, 6) + "-" + parent[0].mobile.slice(6, 10)}</div>
                                     </li>
                                 }
+
                             })}    
                         </ul>
                     </div>

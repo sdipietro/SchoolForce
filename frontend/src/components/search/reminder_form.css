@@ -144,3 +144,8 @@
     font-size: 12px;
     margin-top: 6px;
 }
+
+#reminderForm .recipientsList .demoParent {
+    background-color: #527318;
+    color: white;
+}
