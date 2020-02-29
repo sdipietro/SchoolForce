@@ -39,13 +39,10 @@ router.post('/new',
             parentId: req.body.parentId,
             authorId: req.body.authorId
         });
-        
-        let arrayOfMobiles = req.body.parentMobileArr
-            .map(ele => arrayOfMobiles[ele]);
-        debugger
+
         newReminder.save()
             .then(reminder => res.json(reminder))
-            .then(arrayOfMobiles.forEach(mobile => {
+            .then(req.body.parentMobileArr.forEach(mobile => {
                     client.messages
                         .create({
                             body: newReminder.body,
@@ -59,7 +56,6 @@ router.post('/new',
                             console.error(err);
                             response.status(500).send();
                         })
-
 });
 
 module.exports = router;
