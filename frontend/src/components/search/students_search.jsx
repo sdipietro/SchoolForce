@@ -126,17 +126,17 @@ class StudentsSearch extends React.Component {
                 {/* <title className="adminSearchTitle">Filter the students whose parents you want to message</title> */}
                 <div className='studentNameFilter'>Student Name Filter:
                     <input className='studentNameFilterTextBox' type="text" placeholder="try 'sally' or 'smith'" value={`${this.state.query.text}`} onChange={this.filterUpdate('text')} /> 
+                    <Link
+                        className="adminCreateReminderLink" 
+                        to={{
+                            pathname: "/draftReminder",
+                            state: {
+                                users:{ filteredParentsArr },
+                                adminId: { userAdminId },
+                                createReminder: { createReminder}
+                            }
+                        }}>Draft Reminder</Link>
                 </div>
-                <Link
-                    className="adminCreateReminderLink" 
-                    to={{
-                        pathname: "/draftReminder",
-                        state: {
-                            users:{ filteredParentsArr },
-                            adminId: { userAdminId },
-                            createReminder: { createReminder}
-                        }
-                    }}>Draft Reminder</Link>
 
                 <div className='studentChecks'>
                     <label className="checkboxContainer">Include Allergies Search?
