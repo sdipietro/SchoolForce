@@ -27,3 +27,7 @@
 //         code: `${verificationNumber}` })
 //     .then(verification_check => console.log(verification_check.status));
 
+
+// client.validationRequests
+//     .create({ friendlyName: 'My Home Phone Number', phoneNumber: '+14158675310' })
+//     .then(validation_request => console.log(validation_request.friendlyName));
